@@ -16,8 +16,8 @@ enddate: 2021-12-15        # machine-readable end date for the workshop in YYYY-
 instructor: ["Kristi Liu", "Jon Jablonski"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
 helper: ["Amanda Ho"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 email: ["library-collaboratory@ucsb.edu"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
-collaborative_notes:  # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document (e.g., https://pad.carpentries.org/2015-01-01-euphoria)
-eventbrite:           # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
+collaborative_notes: https://pad.carpentries.org/2021-12-14-ucsb-gitbash-online/ # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document (e.g., https://pad.carpentries.org/2015-01-01-euphoria)
+eventbrite: 208140552997 # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
 ---
 
 {% comment %} See instructions in the comments below for how to edit specific sections of this workshop template. {% endcomment %}
@@ -35,7 +35,7 @@ And run 'make workshop-check' *before* committing to make sure that changes are 
 {% comment %}
 {% endcomment %}
 
-<h2><strong>Registration for this workshop opens on Friday, September 17 at 8:00am PST</strong></h2>
+<h2><strong>Registration for this workshop opens on Friday, November 26 at 8:00am PST</strong></h2>
 <a href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=Bash%2FGit&iso=20211214T0930&p1=1050&ah=4">Check what time registration opens in your time
 zone</a>
 
@@ -66,7 +66,7 @@ It looks like you are setting up a website for a Software Carpentry curriculum b
 {% comment %}
 EVENTBRITE
 
-This block includes the Eventbrite registration widget if
+This block includes the Eventbrite registration widget i
 'eventbrite' has been set in the header.  You can delete it if you
 are not using Eventbrite, or leave it in, since it will not be
 displayed if the 'eventbrite' field in the header is not set.

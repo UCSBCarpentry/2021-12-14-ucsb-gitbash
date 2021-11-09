@@ -3,7 +3,7 @@
 # UCSB SEEDS Carpentry
 
 This repository was created from The Carpentries' ([Software Carpentry][swc-site], [Data Carpentry][dc-site], and
-[Library Carpentry][lc-site]'s) template for creating websites for workshops.
+[Library Carpentry][lc-site]'s) template for creating a website for the SEEDS Bash/Git Workshop.
 
 1. **Please _do not fork this repository directly on GitHub._** Instead, please use GitHub's
    "template" function following [the instructions below](#creating-a-repository) to copy this

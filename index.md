@@ -35,7 +35,7 @@ And run 'make workshop-check' *before* committing to make sure that changes are 
 {% comment %}
 {% endcomment %}
 
-<h2><strong>Registration for this workshop opens on Friday, September 17 at 8:00am PST</strong></h2>
+<h2><strong>Registration for this workshop opens on Friday, November 26 at 8:00am PST</strong></h2>
 <a href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=Bash%2FGit&iso=20211214T0930&p1=1050&ah=4">Check what time registration opens in your time
 zone</a>
 
@@ -66,7 +66,7 @@ It looks like you are setting up a website for a Software Carpentry curriculum b
 {% comment %}
 EVENTBRITE
 
-This block includes the Eventbrite registration widget if
+This block includes the Eventbrite registration widget i
 'eventbrite' has been set in the header.  You can delete it if you
 are not using Eventbrite, or leave it in, since it will not be
 displayed if the 'eventbrite' field in the header is not set.

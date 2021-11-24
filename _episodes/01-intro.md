@@ -87,6 +87,20 @@ when typing commands, either from these lessons or from other sources,
 *do not type the prompt*, only the commands that follow it.
 Also note that after you type a command, you have to press the <kbd>Enter</kbd> key to execute it.
 
+{: .output}
+
+> ## Changing your prompt
+> Your prompt may be super long (containing your username, computer name, etc.).
+> To change your prompt type in:
+>
+> ~~~
+> $ export PS1= ">"
+> ~~~
+> This will last as long as the length of your shell session.
+> {: .language-bash}
+>
+{: .callout}
+
 The prompt is followed by a **text cursor**, a character that indicates the position where your
 typing will appear.
 The cursor is usually a flashing or solid block, but it can also be an underscore or a pipe.

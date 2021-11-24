@@ -91,7 +91,7 @@ Also note that after you type a command, you have to press the <kbd>Enter</kbd> 
 
 > ## Changing your prompt
 > Your prompt may be super long (containing your username, computer name, etc.).
-> To change your prompt type in:
+> To change your prompt, type in:
 >
 > ~~~
 > $ export PS1= ">"

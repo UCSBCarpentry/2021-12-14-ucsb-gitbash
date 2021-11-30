@@ -436,8 +436,7 @@ $ ls -F
 {: .language-bash}
 
 ~~~
-amino-acids.txt   elements/     pdb/	        salmon.txt
-animals.txt       morse.txt     planets.txt     sunspot.txt
+amino-acids.txt   animal-counts/    animals.txt       elements/         morse.txt         pdb/	            planets.txt       salmon.txt        sunspot.txt
 ~~~
 {: .output}
 
@@ -496,8 +495,8 @@ $ ls -F -a
 {: .language-bash}
 
 ~~~
-./   .bash_profile  data/       north-pacific-gyre/  pizza.cfg  thesis/
-../  creatures/     molecules/  notes.txt            solar.pdf  writing/
+./   .bash_profile  data/       north-pacific-gyre/  numbers.txt  solar.pdf
+../  creatures/     molecules/  notes.txt            pizza.cfg    writing/
 ~~~
 {: .output}
 
@@ -670,13 +669,13 @@ Run `pwd` and `ls -F` to ensure that we're in the directory we expect.
 
 > ## Relative Path Resolution
 >
-> Using the filesystem diagram below, if `pwd` displays `/Users/thing`,
-> what will `ls -F ../backup` display?
+> Using the filesystem diagram od shell-lesson-data, if `pwd` displays `/shell-lesson-data/molecules`,
+> what will `ls -F ../creatures` display?
 >
-> 1.  `../backup: No such file or directory`
-> 2.  `2012-12-01 2013-01-08 2013-01-27`
-> 3.  `2012-12-01/ 2013-01-08/ 2013-01-27/`
-> 4.  `original/ pnas_final/ pnas_sub/`
+> 1.  `../creatures: No such file or directory`
+> 2.  `cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb`
+> 3.  `basilisk.dat/ minotaur.dat/ unicorn.dat/`
+> 4.  `basilisk.dat  minotaur.dat  unicorn.dat`
 >
 > ![A directory tree below the Users directory where "/Users" contains the
 directories "backup" and "thing"; "/Users/backup" contains "original",
@@ -685,11 +684,11 @@ directories "backup" and "thing"; "/Users/backup" contains "original",
 "2013-01-27"](../fig/filesystem-challenge.svg)
 >
 > > ## Solution
-> > 1. No: there *is* a directory `backup` in `/Users`.
-> > 2. No: this is the content of `Users/thing/backup`,
+> > 1. No: there *is* a directory `backup` in `/shell-lesson-data`.
+> > 2. No: this is the content of `/shell-lesson-data/molecules`,
 > >    but with `..`, we asked for one level further up.
-> > 3. No: see previous explanation.
-> > 4. Yes: `../backup/` refers to `/Users/backup/`.
+> > 3. No: the content of `/creatures/` are not directories.
+> > 4. Yes: `../creatures/` refers to `/shell-lesson-data/creatures`.
 > {: .solution}
 {: .challenge}
 

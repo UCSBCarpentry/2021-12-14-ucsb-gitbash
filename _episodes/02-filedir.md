@@ -333,7 +333,7 @@ To **quit** the `man` pages, press <kbd>Q</kbd>.
 
 Below is a directory tree of the folder shell-lesson-data. As you follow along the lesson and maneuver in this folder, use the below image as a guide.
 
-![A directory tree below the shell-lesson-data directory where "/shell-lesson-data" contains the directories "creatures", "data", "molecules", "north-pacific-gyre", and "writing"](../fig/filesystem-data.png)
+![A directory tree below the shell-lesson-data directory where "/shell-lesson-data" contains the directories "creatures", "data", "molecules", "north-pacific-gyre", and "writing"](../fig/filesystem_data.png)
 
 Not only can we use `ls` on the current working directory,
 but we can use it to list the contents of a different directory.

@@ -396,10 +396,20 @@ please preview your site before committing, and make sure to run
   Library Carpentry
   {% endif %}
   workshop,
-  you will need access to software as described below.
+  you will need access items as described below.
   In addition, you will need an up-to-date web browser.
 
-  <b> Check back closer to the workshop date for more setup instructions. </b>
+- The Bash Shell
+- Git
+- <a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/tree/gh-pages/data/shell-lesson-data.zip">shell-lesson-data</a>
+
+Please follow the steps below according to your operating system.
+</p>
+
+<h2 id="setup">Install the videoconferencing client</h2>
+
+</p>
+If you haven't used Zoom before, go to the <a href="https://zoom.us/download">official website</a> to download and install the Zoom client for your computer.
 </p>
 
 {% comment %}

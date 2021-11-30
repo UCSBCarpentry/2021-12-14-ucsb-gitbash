@@ -669,7 +669,7 @@ Run `pwd` and `ls -F` to ensure that we're in the directory we expect.
 
 > ## Relative Path Resolution
 >
-> Using the filesystem diagram od shell-lesson-data, if `pwd` displays `/shell-lesson-data/molecules`,
+> Using the filesystem diagram of shell-lesson-data, if `pwd` displays `/shell-lesson-data/molecules`,
 > what will `ls -F ../creatures` display?
 >
 > 1.  `../creatures: No such file or directory`
@@ -677,11 +677,7 @@ Run `pwd` and `ls -F` to ensure that we're in the directory we expect.
 > 3.  `basilisk.dat/ minotaur.dat/ unicorn.dat/`
 > 4.  `basilisk.dat  minotaur.dat  unicorn.dat`
 >
-> ![A directory tree below the Users directory where "/Users" contains the
-directories "backup" and "thing"; "/Users/backup" contains "original",
-"pnas_final" and "pnas_sub"; "/Users/thing" contains "backup"; and
-"/Users/thing/backup" contains "2012-12-01", "2013-01-08" and
-"2013-01-27"](../fig/filesystem-challenge.svg)
+> ![A directory tree below the shell-lesson-data directory where "/shell-lesson-data" contains the directories "creatures", "data", "molecules", "north-pacific-gyre", and "writing"](../fig/filesystem_data.png)
 >
 > > ## Solution
 > > 1. No: there *is* a directory `backup` in `/shell-lesson-data`.
@@ -695,30 +691,22 @@ directories "backup" and "thing"; "/Users/backup" contains "original",
 > ## `ls` Reading Comprehension
 >
 > Using the filesystem diagram below,
-> if `pwd` displays `/Users/backup`,
+> if `pwd` displays `/shell-lesson-data/creatures`,
 > and `-r` tells `ls` to display things in reverse order,
-> what command(s) will result in the following output:
+> what command will result in the following output:
 >
 > ~~~
-> pnas_sub/ pnas_final/ original/
+> unicorn.dat  minotaur.dat  basilisk.dat
 > ~~~
 > {: .output}
 >
-> ![A directory tree below the Users directory where "/Users" contains the
-directories "backup" and "thing"; "/Users/backup" contains "original",
-"pnas_final" and "pnas_sub"; "/Users/thing" contains "backup"; and
-"/Users/thing/backup" contains "2012-12-01", "2013-01-08" and
-"2013-01-27"](../fig/filesystem-challenge.svg)
+> ![A directory tree below the shell-lesson-data directory where "/shell-lesson-data" contains the directories "creatures", "data", "molecules", "north-pacific-gyre", and "writing"](../fig/filesystem_data.png)
 >
-> 1.  `ls pwd`
-> 2.  `ls -r -F`
-> 3.  `ls -r -F /Users/backup`
 >
 > > ## Solution
-> >  1. No: `pwd` is not the name of a directory.
-> >  2. Yes: `ls` without directory argument lists files and directories
+> >  1. `ls -r -F`: `ls` without directory argument lists files and directories
 > >     in the current directory.
-> >  3. Yes: uses the absolute path explicitly.
+> >  2. `ls -r -F /shell-lesson-data/creatures`: uses the absolute path explicitly.
 > {: .solution}
 {: .challenge}
 

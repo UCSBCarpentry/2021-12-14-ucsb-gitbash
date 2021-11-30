@@ -399,9 +399,9 @@ please preview your site before committing, and make sure to run
   you will need access items as described below.
   In addition, you will need an up-to-date web browser.
 
-- The Bash Shell
-- Git
-- <a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/blob/gh-pages/data/shell-lesson-data.zip?raw=true">shell-lesson-data</a>
+<ul>The Bash Shell</ul>
+<ul>Git</ul>
+<ul><a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/blob/gh-pages/data/shell-lesson-data.zip?raw=true">shell-lesson-data</a></ul>
 
 Please follow the steps below according to your operating system.
 </p>

@@ -401,14 +401,14 @@ please preview your site before committing, and make sure to run
 
 - The Bash Shell
 - Git
-- <a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/tree/gh-pages/data/shell-lesson-data.zip">shell-lesson-data</a>
+- <a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/blob/gh-pages/data/shell-lesson-data.zip?raw=true">shell-lesson-data</a>
 
 Please follow the steps below according to your operating system.
 </p>
 
 <h2 id="setup">Install the videoconferencing client</h2>
 
-</p>
+<p>
 If you haven't used Zoom before, go to the <a href="https://zoom.us/download">official website</a> to download and install the Zoom client for your computer.
 </p>
 

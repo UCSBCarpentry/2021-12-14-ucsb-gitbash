@@ -117,7 +117,7 @@ only the number of characters or the number of words in the files.
 > sitting there: the command doesn't appear to do anything.
 >
 > If you make this kind of mistake, you can escape out of this state by holding down
-> the control key (<kbd>Ctrl</kbd>) and typing the letter <kbd>C</kbd> once and 
+> the control key (<kbd>Ctrl</kbd>) and typing the letter <kbd>C</kbd> once and
 > letting go of the <kbd>Ctrl</kbd> key.
 > <kbd>Ctrl</kbd>+<kbd>C</kbd>
 {: .callout}
@@ -300,7 +300,7 @@ the output of `head` must be the file with the fewest lines.
 
 > ## What Does `>>` Mean?
 >
-> We have seen the use of `>`, but there is a similar operator `>>` 
+> We have seen the use of `>`, but there is a similar operator `>>`
 > which works slightly differently.
 > We'll learn about the differences between these two operators by printing some strings.
 > We can use the `echo` command to print strings e.g.
@@ -336,7 +336,7 @@ the output of `head` must be the file with the fewest lines.
 > >
 > > We see from the second example that the `>>` operator also writes 'hello' to a file
 > > (in this case`testfile02.txt`),
-> > but appends the string to the file if it already exists 
+> > but appends the string to the file if it already exists
 > > (i.e. when we run it for the second time).
 > {: .solution}
 {: .challenge}
@@ -599,96 +599,6 @@ so that you and other people can put those programs into pipes to multiply their
 > > the pipelines (make sure you are in the `shell-lesson-data/data` directory).
 > {: .solution}
 {: .challenge}
-
-## Nelle's Pipeline: Checking Files
-
-Nelle has run her samples through the assay machines
-and created 17 files in the `north-pacific-gyre/2012-07-03` directory described earlier.
-As a quick check, starting from her home directory, Nelle types:
-
-~~~
-$ cd north-pacific-gyre/2012-07-03
-$ wc -l *.txt
-~~~
-{: .language-bash}
-
-The output is 18 lines that look like this:
-
-~~~
-300 NENE01729A.txt
-300 NENE01729B.txt
-300 NENE01736A.txt
-300 NENE01751A.txt
-300 NENE01751B.txt
-300 NENE01812A.txt
-... ...
-~~~
-{: .output}
-
-Now she types this:
-
-~~~
-$ wc -l *.txt | sort -n | head -n 5
-~~~
-{: .language-bash}
-
-~~~
- 240 NENE02018B.txt
- 300 NENE01729A.txt
- 300 NENE01729B.txt
- 300 NENE01736A.txt
- 300 NENE01751A.txt
-~~~
-{: .output}
-
-Whoops: one of the files is 60 lines shorter than the others.
-When she goes back and checks it,
-she sees that she did that assay at 8:00 on a Monday morning --- someone
-was probably in using the machine on the weekend,
-and she forgot to reset it.
-Before re-running that sample,
-she checks to see if any files have too much data:
-
-~~~
-$ wc -l *.txt | sort -n | tail -n 5
-~~~
-{: .language-bash}
-
-~~~
- 300 NENE02040B.txt
- 300 NENE02040Z.txt
- 300 NENE02043A.txt
- 300 NENE02043B.txt
-5040 total
-~~~
-{: .output}
-
-Those numbers look good --- but what's that 'Z' doing there in the third-to-last line?
-All of her samples should be marked 'A' or 'B';
-by convention,
-her lab uses 'Z' to indicate samples with missing information.
-To find others like it, she does this:
-
-~~~
-$ ls *Z.txt
-~~~
-{: .language-bash}
-
-~~~
-NENE01971Z.txt    NENE02040Z.txt
-~~~
-{: .output}
-
-Sure enough,
-when she checks the log on her laptop,
-there's no depth recorded for either of those samples.
-Since it's too late to get the information any other way,
-she must exclude those two files from her analysis.
-She could delete them using `rm`,
-but there are actually some analyses she might do later where depth doesn't matter,
-so instead, she'll have to be careful later on to select files using the wildcard expressions
-`NENE*A.txt NENE*B.txt`.
-
 
 > ## Removing Unneeded Files
 >

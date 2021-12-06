@@ -1,6 +1,6 @@
 ---
 title: "Loops"
-teaching: 40
+teaching: 25
 exercises: 10
 questions:
 - "How can I perform the same actions on many different files?"
@@ -472,28 +472,40 @@ $ for filename in *.dat
 {: .language-bash}
 
 This loop runs the `cp` command once for each filename.
-The first time,
-when `$filename` expands to `basilisk.dat`,
-the shell executes:
 
-~~~
-cp basilisk.dat original-basilisk.dat
-~~~
-{: .language-bash}
-
-The second time, the command is:
-
-~~~
-cp minotaur.dat original-minotaur.dat
-~~~
-{: .language-bash}
-
-The third and last time, the command is:
-
-~~~
-cp unicorn.dat original-unicorn.dat
-~~~
-{: .language-bash}
+> ## Variables in Loop Iteration
+>
+> What command does the shell execute when it <b>first</b> completes the loop? How about the <b>second</b> and <b>third</b> iterations?
+>
+> ~~~
+> for filename in *.dat
+> do
+>     cp $filename original-$filename
+> done
+> ~~~
+> {: .language-bash}
+>
+> > ## Solution
+> > The first time, when `$filename` expands to `basilisk.dat`,
+> > the shell executes:
+> > ~~~
+> > cp basilisk.dat original-basilisk.dat
+> > ~~~
+> > {: .language-bash}
+> >
+> > The second time, the command is:
+> > ~~~
+> > cp minotaur.dat original-minotaur.dat
+> > ~~~
+> > {: .language-bash}
+> > The third and last time, the command is:
+> >
+> > ~~~
+> > cp unicorn.dat original-unicorn.dat
+> > ~~~
+> > {: .language-bash}
+> {: .solution}
+{: .challenge}
 
 Since the `cp` command does not normally produce any output, it's hard to check
 that the loop is doing the correct thing.

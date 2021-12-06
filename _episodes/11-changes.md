@@ -202,7 +202,7 @@ $ git log
 
 ~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Vlad <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
     Adding in an example script that uses user input
@@ -498,19 +498,19 @@ $ git log
 
 ~~~
 commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Vlad <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
     "Adding in an example script that uses user input"
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Vlad <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
     "Add comment on what `read` command does"
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad Dracula <vlad@tran.sylvan.ia>
+Author: Vlad <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
     "Adding more about `read` command"
@@ -554,10 +554,10 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >
 > ~~~
 > commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
-> Author: Vlad Dracula <vlad@tran.sylvan.ia>
+> Author: Vlad <vlad@tran.sylvan.ia>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
->    Discuss concerns about Mars' climate for Mummy
+>    Adding in an example script that uses user input
 > ~~~
 > {: .output}
 >
@@ -569,9 +569,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> 005937f (HEAD -> main) Discuss concerns about Mars' climate for Mummy
-> 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> f22b25e Start notes on Mars as a base
+> 005937f (HEAD -> main) Adding more about `read` command
+> 34961b1 Add comment on what `read` command does
+> f22b25e Adding in an example script that uses user input
 > ~~~
 > {: .output}
 >
@@ -586,9 +586,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > ~~~
 > {: .language-bash}
 > ~~~
-> * 005937f (HEAD -> main) Discuss concerns about Mars' climate for Mummy
-> * 34961b1 Add concerns about effects of Mars' moons on Wolfman
-> * f22b25e Start notes on Mars as a base
+> * 005937f (HEAD -> main) Adding more about `read` command
+> * 34961b1 Add comment on what `read` command does
+> * f22b25e Adding in an example script that uses user input
 > ~~~
 > {: .output}
 {: .callout}
@@ -601,14 +601,14 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Try it for yourself:
 >
 >    ~~~
->    $ mkdir spaceships
+>    $ mkdir loops
 >    $ git status
->    $ git add spaceships
+>    $ git add loops
 >    $ git status
 >    ~~~
 >    {: .language-bash}
 >
->    Note, our newly created empty directory `spaceships` does not appear in
+>    Note, our newly created empty directory `loops` does not appear in
 >    the list of untracked files even if we explicitly add it (_via_ `git add`) to our
 >    repository. This is the reason why you will sometimes see `.gitkeep` files
 >    in otherwise empty directories. Unlike `.gitignore`, these files are not special
@@ -626,9 +626,9 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Try it for yourself:
 >
 >    ~~~
->    $ touch spaceships/apollo-11 spaceships/sputnik-1
+>    $ touch shell-scripts/loops
 >    $ git status
->    $ git add spaceships
+>    $ git add loops
 >    $ git status
 >    ~~~
 >    {: .language-bash}
@@ -636,7 +636,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Before moving on, we will commit these changes.
 >
 >    ~~~
->    $ git commit -m "Add some initial thoughts on spaceships"
+>    $ git commit -m "Add example on loops"
 >    ~~~
 >    {: .language-bash}
 >

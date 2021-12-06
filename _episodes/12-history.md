@@ -21,8 +21,7 @@ As we saw in the previous episode, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
-We've been adding one line at a time to `for-loop.sh`, so it's easy to track our
-progress by looking, so let's do that using our `HEAD`s.  Before we start,
+We can track our progress by looking, so let's do that using our `HEAD`s.  Before we start,
 let's make a change to `for-loop.sh`, adding commentary using the #.
 
 ~~~
@@ -32,6 +31,8 @@ $ cat for-loop.sh
 {: .language-bash}
 
 ~~~
+# for-loop example
+# we will be creating a program that "deals" values at random
 #!/bin/bash
 cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
 
@@ -40,12 +41,11 @@ read value
 
 for i in $(seq 1 $value);
 do echo ${cards[RANDOM%${#cards[@]}]};
-done
 
-# for loop iterates over user input values
-# `${cards[RANDOM%${#cards[@]}]}` command randomly selects items
+done
+# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
-{: .output}
+{: .language-bash}
 
 Now, let's see what we get.
 
@@ -55,23 +55,15 @@ $ git diff HEAD for-loop.sh
 {: .language-bash}
 
 ~~~
-diff --git a/for-loop.sh b/for-loop.sh
-index b36abfd..0848c8d 100644
---- a/for-loop.sh
-+++ b/for-loop.sh
-@@ -1,3 +1,4 @@
- #!/bin/bash
- cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
-
- echo "how many cards would you like?"
- read value
-
- for i in $(seq 1 $value);
+diff --git a/loops/for-loop.sh b/loops/for-loop.sh
+index 9dd28bc..8975db5 100644
+--- a/loops/for-loop.sh
++++ b/loops/for-loop.sh
+@@ -10,3 +10,4 @@ for i in $(seq 1 $value);
  do echo ${cards[RANDOM%${#cards[@]}]};
- done
 
- # for loop iterates over user input values
-+# `${cards[RANDOM%${#cards[@]}]}` command randomly selects items
+ done
++# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
 {: .output}
 
@@ -96,22 +88,25 @@ $ git diff HEAD~3 for-loop.sh
 {: .language-bash}
 
 ~~~
-diff --git a/for-loop.sh b/for-loop.sh
-index df0654a..b36abfd 100644
---- a/for-loop.sh
-+++ b/for-loop.sh
-@@ -1 +1,4 @@
- #!/bin/bash
- cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
-
- echo "how many cards would you like?"
- read value
-
- for i in $(seq 1 $value);
-do echo ${cards[RANDOM%${#cards[@]}]};
-done
-+# for loop iterates over user input values
- +# `${cards[RANDOM%${#cards[@]}]}` command randomly selects items
+diff --git a/loops/for-loop.sh b/loops/for-loop.sh
+new file mode 100644
+index 0000000..8975db5
+--- /dev/null
++++ b/loops/for-loop.sh
+@@ -0,0 +1,13 @@
++# for-loop example
++# we will be creating a program that "deals" values at random
++#!/bin/bash
++cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
++
++echo "how many cards would you like?"
++read value
++
++for i in $(seq 1 $value);
++do echo ${cards[RANDOM%${#cards[@]}]};
++
++done
++# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
 {: .output}
 
@@ -126,24 +121,27 @@ $ git show HEAD~3 for-loop.sh
 
 ~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad <vlad@tran.sylvan.ia>
+Author: User <User@ucsb.edu>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
     Adding in an example script that uses for loop
 
-diff --git a/for-loop.sh b/for-loop.sh
-new file mode 100644
-index 0000000..df0654a
---- /dev/null
-+++ b/for-loop.sh
-@@ -0,0 +1 @@
+diff --git a/loops/for-loop.sh b/loops/for-loop.sh
+index de9b2a4..9dd28bc 100644
+--- a/loops/for-loop.sh
++++ b/loops/for-loop.sh
+@@ -1,2 +1,12 @@
+# for-loop example
+# we will be creating a program that "deals" values at random
++#!/bin/bash
 +cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
-
++
 +echo "how many cards would you like?"
 +read value
-
++
 +for i in $(seq 1 $value);
 +do echo ${cards[RANDOM%${#cards[@]}]};
++
 +done
 ~~~
 {: .output}
@@ -163,25 +161,25 @@ These are unique IDs for the changes,
 and "unique" really does mean unique:
 every change to any set of files on any computer
 has a unique 40-character identifier.
-Our first commit was given the ID
+Our comment addition was given the ID
 `f22b25e3233b4645dabd0d81e651fe074bd8e73b`,
 so let's try this:
 
 ~~~
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b for-loop.sh
+$ git diff fd73b8d5dd250790131e66918a94df424c9c69cf for-loop.sh
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/for-loop.sh b/for-loop.sh
-index df0654a..93a3e13 100644
---- a/for-loop.sh
-+++ b/for-loop.sh
-@@ -1 +1,4 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+An ill-considered change
+diff --git a/loops/for-loop.sh b/loops/for-loop.sh
+index 9dd28bc..8975db5 100644
+--- a/loops/for-loop.sh
++++ b/loops/for-loop.sh
+@@ -10,3 +10,4 @@ for i in $(seq 1 $value);
+ do echo ${cards[RANDOM%${#cards[@]}]};
+
+ done
++# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
 {: .output}
 
@@ -190,20 +188,20 @@ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters (typically seven for normal size projects):
 
 ~~~
-$ git diff f22b25e for-loop.sh
+$ git diff fd73b8d for-loop.sh
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/for-loop.sh b/for-loop.sh
-index df0654a..93a3e13 100644
---- a/for-loop.sh
-+++ b/for-loop.sh
-@@ -1 +1,4 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+An ill-considered change
+diff --git a/loops/for-loop.sh b/loops/for-loop.sh
+index 9dd28bc..8975db5 100644
+--- a/loops/for-loop.sh
++++ b/loops/for-loop.sh
+@@ -10,3 +10,4 @@ for i in $(seq 1 $value);
+ do echo ${cards[RANDOM%${#cards[@]}]};
+
+ done
++# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
 {: .output}
 
@@ -243,9 +241,18 @@ $ cat for-loop.sh
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+# for-loop example
+# we will be creating a program that "deals" values at random
+#!/bin/bash
+cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
+
+echo "how many cards would you like?"
+read value
+
+for i in $(seq 1 $value);
+do echo ${cards[RANDOM%${#cards[@]}]};
+
+done
 ~~~
 {: .output}
 

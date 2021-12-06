@@ -23,25 +23,29 @@ We still need a subdirectory, `user-input`, inside of `shell-scripts`.
 Confirm you have `~/Desktop/shell-scripts/user-input` and that it's your working directory.
 If you are not inside `~/Desktop/shell-scripts/user-input`, recall how to move to through directories and how to make a subdirectory.
 
+> ## Recall Bash Commands
 >
->> To see what your working directory is:
->> ~~~
->> $ pwd
->> ~~~
->> {: .language-bash}
->>
->> To change directories:
->> ~~~
->> $ cd ~/Desktop/shell-scripts
->> ~~~
->> {: .language-bash}
->>
->> To create a directory, and then move to that directory:
->> ~~~
->> $ mkdir user-input # user-input is a chosen name for our subdirectory
->> $ cd user-input
->> ~~~
->> {: .language-bash}
+> Try to create an empty directory inside of `shell-scripts` called `user-input.`
+>
+> > ## Commands
+> > To see what your working directory is:
+> > ~~~
+> > $ pwd
+> > ~~~
+> > {: .language-bash}
+> >
+> > To change directories:
+> > ~~~
+> > $ cd ~/Desktop/shell-scripts
+> > ~~~
+> > {: .language-bash}
+> >
+> > To create a directory, and then move to that directory:
+> > ~~~
+> > $ mkdir user-input # user-input is a chosen name for our subdirectory
+> > $ cd user-input
+> > ~~~
+> > {: .language-bash}
 > {: .solution}
 {: .challenge}
 
@@ -55,7 +59,7 @@ $ nano ui-example.sh
 ~~~
 {: .language-bash}
 
-Type the text below into the `ui-example.sh` file. As you type, recall or discuss what each command does.
+Type the text below into the `ui-example.sh` file. Save the script; recall or discuss what each command does.
 
 ~~~
 echo "What is your name?"
@@ -92,7 +96,7 @@ echo "Hello $name."
 ~~~
 {: .output}
 
-Run `ui-example.sh`. What do you think the `read` command does?
+Run `ui-example.sh` using the `bash` command. What do you think the `read` command does?
 
 If we check the status of our project again,
 Git tells us that it's noticed the new file:
@@ -202,7 +206,7 @@ $ git log
 
 ~~~
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad <vlad@tran.sylvan.ia>
+Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
     Adding in an example script that uses user input
@@ -282,12 +286,12 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/ui-example.sh b/ui-example.sh
-index b5c9f2a..8f066d7 100644
---- a/ui-example.sh
-+++ b/ui-example.sh
+diff --git a/user-input/ui-example.sh b/user-input/ui-example.sh
+index b5c9f2a..6db94fd 100644
+--- a/user-input/ui-example.sh
++++ b/user-input/ui-example.sh
 @@ -1,3 +1,4 @@
-+# 'read' command requests user to input text
++#'read' command requests user to input text
  echo "What is your name?"
  read name
  echo "Hello $name."
@@ -313,7 +317,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add comment on what `read` command does"
+$ git commit -m "Add comment on what read command does"
 ~~~
 {: .language-bash}
 
@@ -335,7 +339,7 @@ Let's fix that:
 
 ~~~
 $ git add ui-example.sh
-$ git commit -m "Add comment on what `read` command does"
+$ git commit -m "Add comment on what read command does"
 ~~~
 {: .language-bash}
 
@@ -409,16 +413,16 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/ui-example.sh b/ui-example.sh
-index 315bf3a..b36abfd 100644
---- a/ui-example.sh
-+++ b/ui-example.sh
-@@ -1,2 +1,3 @@
--# the 'read' command requests user to input text
-  echo "What is your name?"
-  read name
-  echo "Hello $name."
-+# the 'read' command requests user to input text, we use `$` to recall the variable established by `read`
+diff --git a/user-input/ui-example.sh b/user-input/ui-example.sh
+index 6db94fd..d586f12 100644
+--- a/user-input/ui-example.sh
++++ b/user-input/ui-example.sh
+@@ -1,4 +1,4 @@
+-#'read' command requests user to input text
+ echo "What is your name?"
+ read name
+ echo "Hello $name."
++#`read` command requests user input, we use `$` to recall the variable established by `read`
 ~~~
 {: .output}
 
@@ -447,16 +451,15 @@ $ git diff --staged
 {: .language-bash}
 
 ~~~
-diff --git a/ui-example.sh b/ui-example.sh
-index 315bf3a..b36abfd 100644
---- a/ui-example.sh
-+++ b/ui-example.sh
-@@ -1,2 +1,3 @@
--# the 'read' command requests user to input text
-  echo "What is your name?"
-  read name
-  echo "Hello $name."
-+# the 'read' command requests user to input text, we use `$` to recall the variable established by `read`
+diff --git a/user-input/ui-example.sh b/user-input/ui-example.sh
+index 6db94fd..d586f12 100644
+--- a/user-input/ui-example.sh
++++ b/user-input/ui-example.sh
+@@ -1,4 +1,4 @@
+-#'read' command requests user to input text
+ echo "What is your name?"
+ read name
+ echo "Hello $name."
 ~~~
 {: .output}
 
@@ -466,7 +469,7 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Adding more about `read` command"
+$ git commit -m "Adding more about read"
 ~~~
 {: .language-bash}
 
@@ -498,22 +501,22 @@ $ git log
 
 ~~~
 commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
-Author: Vlad <vlad@tran.sylvan.ia>
+Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    "Adding in an example script that uses user input"
+    Adding more about read command
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
-Author: Vlad <vlad@tran.sylvan.ia>
+Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
-    "Add comment on what `read` command does"
+    Add comment on what read command does
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: Vlad <vlad@tran.sylvan.ia>
+Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    "Adding more about `read` command"
+    Adding in an example script that uses user input
 ~~~
 {: .output}
 
@@ -554,10 +557,10 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >
 > ~~~
 > commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
-> Author: Vlad <vlad@tran.sylvan.ia>
+> Author: user <user@ucsb.edu>
 > Date:   Thu Aug 22 10:14:07 2013 -0400
 >
->    Adding in an example script that uses user input
+>    Adding more about read command
 > ~~~
 > {: .output}
 >
@@ -601,6 +604,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Try it for yourself:
 >
 >    ~~~
+>    $ cd ..
 >    $ mkdir loops
 >    $ git status
 >    $ git add loops
@@ -626,7 +630,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Try it for yourself:
 >
 >    ~~~
->    $ touch shell-scripts/loops
+>    $ touch loops/for-loop.sh
 >    $ git status
 >    $ git add loops
 >    $ git status
@@ -636,7 +640,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    Before moving on, we will commit these changes.
 >
 >    ~~~
->    $ git commit -m "Add example on loops"
+>    $ git commit -m "Add in subdir for loops"
 >    ~~~
 >    {: .language-bash}
 >
@@ -682,11 +686,72 @@ repository (`git commit`):
 > {: .solution}
 {: .challenge}
 
-we will make a different type of shell script, using for loops. Make a subdirectory called `for-loop` that is inside of `shell-scripts`, so that your working directory is `~/desktop/shell-scripts/for-loop`.
-Inside of `~/desktop/shell-scripts/for-loop`, create a shell script file called `for-loop.sh`.
+> ## Committing Multiple Files
+>
+> The staging area can hold changes from any number of files
+> that you want to commit as a single snapshot.
+>
+> 1. Add some text to `for-loop.sh`
+> 2. Create a new file `notes-for-loop.txt`
+> 3. Add changes from both files to the staging area,
+> and commit those changes.
+>
+> > ## Solution
+> >
+> > First we make our changes to the for-loop.sh` files:
+> > ~~~
+> > $ nano for-loop.sh
+> > $ cat for-loop.sh
+> > ~~~
+> > {: .language-bash}
+> > ~~~
+> > # for-loop example
+> > # we will be creating a program that "deals" values at random
+> > ~~~
+> > {: .output}
+> >
+> > ~~~
+> > $ nano notes-for-loop.txt
+> > $ cat notes-for-loop.txt
+> > ~~~
+> > {: .language-bash}
+> > ~~~
+> > For loops start with `for` and ends with `done`.
+> > ~~~
+> > {: .output}
+> >
+> > Now you can add both files to the staging area. We can do that in one line:
+> >
+> > ~~~
+> > $ git add for-loop.sh notes-for-loop.sh
+> > ~~~
+> > {: .language-bash}
+> > Or with multiple commands:
+> > ~~~
+> > $ git add for-loop.sh
+> > $ git add notes-for-loop.txt
+> > ~~~
+> > {: .language-bash}
+> > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
+> > ~~~
+> > $ git commit -m "Add in for loop example"
+> > ~~~
+> > {: .language-bash}
+> > ~~~
+> > [main 0313f15] Add in loop example
+> > 2 files changed, 3 insertions(+)
+> > create mode 100644 loops/for-loop-notes.txt
+> > ~~~
+> > {: .output}
+> {: .solution}
+{: .challenge}
 
-The line of code below takes a number from the user, and deals out numbers from a list.
+Add in and commit the script of the for-loop example. The line of code below takes a number from the user, and deals out numbers from a list. The `echo ${cards[RANDOM%${#cards[@]}]}` command prints a random value from the list of `cards`.
+Think about how the structure of this for loop works.
+
 ~~~
+# for-loop example
+# we will be creating a program that "deals" values at random
 #!/bin/bash
 cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
 
@@ -700,62 +765,6 @@ done
 ~~~
 {: .language-bash}
 
-> ## Committing Multiple Files (Still in progress)
->
-> The staging area can hold changes from any number of files
-> that you want to commit as a single snapshot.
->
-> 1. Add some text to `for-loop.sh`
-> 2. Create a new file `for-loop.sh` with your initial thoughts
-> 3. Add changes from both files to the staging area,
-> and commit those changes.
->
-> > ## Solution
-> >
-> > First we make our changes to the for-loop.sh` files:
-> > ~~~
-> > #!/bin/bash
-> > cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
-> >
-> > echo "how many cards would you like?"
-> > read value
-> >
-> > for i in $(seq 1 $value);
-> > do echo ${cards[RANDOM%${#cards[@]}]};
-> >
-> > done
-> > ~~~
-> > {: .language-bash}
-> > ~~~
-> > $ nano for-loop.sh
-> > $ cat for-loop.sh
-> > ~~~
-> > {: .language-bash}
-> > Now you can add both files to the staging area. We can do that in one line:
-> >
-> > ~~~
-> > $ git add for-loop.sh
-> > ~~~
-> > {: .language-bash}
-> > Or with multiple commands:
-> > ~~~
-> > $ git add for-loop.sh
-> > ~~~
-> > {: .language-bash}
-> > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
-> > ~~~
-> > $ git commit -m "Add in for loop example script"
-> > ~~~
-> > {: .language-bash}
-> > ~~~
-> > [main cc127c2]
-> >  Add in for loop example script
-> >  2 files changed, 2 insertions(+)
-> >  create mode 100644 for-loop.sh
-> > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
 
 > ## `bio` Repository
 >

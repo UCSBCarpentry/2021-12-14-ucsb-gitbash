@@ -19,28 +19,48 @@ keypoints:
 ---
 
 First let's make sure we're still in the right directory.
-You should be in the `planets` directory.
+We still need a subdirectory, `user-input`, inside of `shell-scripts`.
+Confirm you have `~/Desktop/shell-scripts/user-input` and that it's your working directory.
+If you are not inside `~/Desktop/shell-scripts/user-input`, recall how to move to through directories and how to make a subdirectory.
 
-~~~
-$ cd ~/Desktop/planets
-~~~
-{: .language-bash}
+>
+>> To see what your working directory is:
+>> ~~~
+>> $ pwd
+>> ~~~
+>> {: .language-bash}
+>>
+>> To change directories:
+>> ~~~
+>> $ cd ~/Desktop/shell-scripts
+>> ~~~
+>> {: .language-bash}
+>>
+>> To create a directory, and then move to that directory:
+>> ~~~
+>> $ mkdir user-input # user-input is a chosen name for our subdirectory
+>> $ cd user-input
+>> ~~~
+>> {: .language-bash}
+> {: .solution}
+{: .challenge}
 
-Let's create a file called `mars.txt` that contains some notes
-about the Red Planet's suitability as a base.
+Let's create a shell script file inside of `~desktop/shell-scripts/user-input` that is called `ui-example.sh` that contains shell scripts using user input.
 We'll use `nano` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
 
 ~~~
-$ nano mars.txt
+$ nano ui-example.sh
 ~~~
 {: .language-bash}
 
-Type the text below into the `mars.txt` file:
+Type the text below into the `ui-example.sh` file. As you type, recall or discuss what each command does.
 
 ~~~
-Cold and dry, but everything is my favorite color
+echo "What is your name?"
+read name
+echo "Hello $name."
 ~~~
 {: .output}
 
@@ -53,22 +73,26 @@ $ ls
 {: .language-bash}
 
 ~~~
-mars.txt
+ui-example.sh
 ~~~
 {: .output}
 
 
-`mars.txt` contains a single line, which we can see by running:
+`ui-example.sh` contains some lines of code, which we can see by running:
 
 ~~~
-$ cat mars.txt
+$ cat ui-example.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
+echo "What is your name?"
+read name
+echo "Hello $name."
 ~~~
 {: .output}
+
+Run `ui-example.sh`. What do you think the `read` command does?
 
 If we check the status of our project again,
 Git tells us that it's noticed the new file:
@@ -86,7 +110,7 @@ No commits yet
 Untracked files:
    (use "git add <file>..." to include in what will be committed)
 
-	mars.txt
+	ui-example.sh
 
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
@@ -97,7 +121,7 @@ that Git isn't keeping track of.
 We can tell Git to track a file using `git add`:
 
 ~~~
-$ git add mars.txt
+$ git add ui-example.sh
 ~~~
 {: .language-bash}
 
@@ -116,25 +140,25 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   mars.txt
+	new file:   ui-example.sh
 
 ~~~
 {: .output}
 
-Git now knows that it's supposed to keep track of `mars.txt`,
+Git now knows that it's supposed to keep track of `ui-example.sh`,
 but it hasn't recorded these changes as a commit yet.
 To get it to do that,
 we need to run one more command:
 
 ~~~
-$ git commit -m "Start notes on Mars as a base"
+$ git commit -m "Adding in an example script that uses user input"
 ~~~
 {: .language-bash}
 
 ~~~
-[main (root-commit) f22b25e] Start notes on Mars as a base
- 1 file changed, 1 insertion(+)
- create mode 100644 mars.txt
+[main (root-commit) f22b25e] Adding in an example script that uses user input
+ 1 file changed, 3 insertions(+)
+ create mode 100644 ui-example.sh
 ~~~
 {: .output}
 
@@ -181,7 +205,7 @@ commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Start notes on Mars as a base
+    Adding in an example script that uses user input
 ~~~
 {: .output}
 
@@ -196,26 +220,28 @@ and the log message Git was given when the commit was created.
 
 > ## Where Are My Changes?
 >
-> If we run `ls` at this point, we will still see just one file called `mars.txt`.
+> If we run `ls` at this point, we will still see just one file called `ui-example.sh`.
 > That's because Git saves information about files' history
 > in the special `.git` directory mentioned earlier
 > so that our filesystem doesn't become cluttered
 > (and so that we can't accidentally edit or delete an old version).
 {: .callout}
 
-Now suppose Dracula adds more information to the file.
+Now suppose let's add a comment to `ui-example.sh`.
 (Again, we'll edit with `nano` and then `cat` the file to show its contents;
 you may use a different editor, and don't need to `cat`.)
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano ui-example.sh
+$ cat ui-example.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
+# 'read' command requests user to input text
+echo "What is your name?"
+read name
+echo "Hello $name."
 ~~~
 {: .output}
 
@@ -233,7 +259,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   ui-example.sh
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -256,13 +282,15 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..315bf3a 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,2 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
+diff --git a/ui-example.sh b/ui-example.sh
+index b5c9f2a..8f066d7 100644
+--- a/ui-example.sh
++++ b/ui-example.sh
+@@ -1,3 +1,4 @@
++# 'read' command requests user to input text
+ echo "What is your name?"
+ read name
+ echo "Hello $name."
 ~~~
 {: .output}
 
@@ -285,7 +313,7 @@ If we break it down into pieces:
 After reviewing our change, it's time to commit it:
 
 ~~~
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git commit -m "Add comment on what `read` command does"
 ~~~
 {: .language-bash}
 
@@ -295,7 +323,7 @@ Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git checkout -- <file>..." to discard changes in working directory)
 
-	modified:   mars.txt
+	modified:   ui-example.sh
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
@@ -306,13 +334,13 @@ Git won't commit because we didn't use `git add` first.
 Let's fix that:
 
 ~~~
-$ git add mars.txt
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+$ git add ui-example.sh
+$ git commit -m "Add comment on what `read` command does"
 ~~~
 {: .language-bash}
 
 ~~~
-[main 34961b1] Add concerns about effects of Mars' moons on Wolfman
+[main 34961b1] Add comment on what `read` command does
  1 file changed, 1 insertion(+)
 ~~~
 {: .output}
@@ -359,19 +387,19 @@ but not yet committed.
 Let's watch as our changes to a file move from our editor
 to the staging area
 and into long-term storage.
-First,
-we'll add another line to the file:
+First, move the comment to be placed below `Hello $name`. Add in more content to the comment.:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano ui-example.sh
+$ cat ui-example.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+echo "What is your name?"
+read name
+echo "Hello $name."
+#the read command requests user input, we use `$` to recall the variable established by `read`
 ~~~
 {: .output}
 
@@ -381,14 +409,16 @@ $ git diff
 {: .language-bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/ui-example.sh b/ui-example.sh
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/ui-example.sh
++++ b/ui-example.sh
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+-# the 'read' command requests user to input text
+  echo "What is your name?"
+  read name
+  echo "Hello $name."
++# the 'read' command requests user to input text, we use `$` to recall the variable established by `read`
 ~~~
 {: .output}
 
@@ -399,7 +429,7 @@ Now let's put that change in the staging area
 and see what `git diff` reports:
 
 ~~~
-$ git add mars.txt
+$ git add ui-example.sh
 $ git diff
 ~~~
 {: .language-bash}
@@ -417,14 +447,16 @@ $ git diff --staged
 {: .language-bash}
 
 ~~~
-diff --git a/mars.txt b/mars.txt
+diff --git a/ui-example.sh b/ui-example.sh
 index 315bf3a..b36abfd 100644
---- a/mars.txt
-+++ b/mars.txt
+--- a/ui-example.sh
++++ b/ui-example.sh
 @@ -1,2 +1,3 @@
- Cold and dry, but everything is my favorite color
- The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
+-# the 'read' command requests user to input text
+  echo "What is your name?"
+  read name
+  echo "Hello $name."
++# the 'read' command requests user to input text, we use `$` to recall the variable established by `read`
 ~~~
 {: .output}
 
@@ -434,13 +466,13 @@ and what's in the staging area.
 Let's save our changes:
 
 ~~~
-$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+$ git commit -m "Adding more about `read` command"
 ~~~
 {: .language-bash}
 
 ~~~
-[main 005937f] Discuss concerns about Mars' climate for Mummy
- 1 file changed, 1 insertion(+)
+[main 005937f] "Adding more about `read` command"
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
 
@@ -469,19 +501,19 @@ commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
-    Discuss concerns about Mars' climate for Mummy
+    "Adding in an example script that uses user input"
 
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
-    Add concerns about effects of Mars' moons on Wolfman
+    "Add comment on what `read` command does"
 
 commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
 Author: Vlad Dracula <vlad@tran.sylvan.ia>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
-    Start notes on Mars as a base
+    "Adding more about `read` command"
 ~~~
 {: .output}
 
@@ -620,10 +652,10 @@ repository (`git commit`):
 > ## Choosing a Commit Message
 >
 > Which of the following commit messages would be most appropriate for the
-> last commit made to `mars.txt`?
+> last commit made to `ui-example.sh`?
 >
 > 1. "Changes"
-> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to mars.txt"
+> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to ui-example.sh"
 > 3. "Discuss effects of Mars' climate on the Mummy"
 >
 > > ## Solution
@@ -671,7 +703,7 @@ repository (`git commit`):
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `mars.txt` noting your decision
+> 1. Add some text to `ui-example.sh` noting your decision
 > to consider Venus as a base
 > 2. Create a new file `venus.txt` with your initial thoughts
 > about Venus as a base for you and your friends
@@ -680,10 +712,10 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > First we make our changes to the `mars.txt` and `venus.txt` files:
+> > First we make our changes to the `ui-example.sh` and `venus.txt` files:
 > > ~~~
-> > $ nano mars.txt
-> > $ cat mars.txt
+> > $ nano ui-example.sh
+> > $ cat ui-example.sh
 > > ~~~
 > > {: .language-bash}
 > > ~~~
@@ -702,12 +734,12 @@ repository (`git commit`):
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add mars.txt venus.txt
+> > $ git add ui-example.sh venus.txt
 > > ~~~
 > > {: .language-bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add mars.txt
+> > $ git add ui-example.sh
 > > $ git add venus.txt
 > > ~~~
 > > {: .language-bash}
@@ -737,7 +769,7 @@ repository (`git commit`):
 >
 > > ## Solution
 > >
-> > If needed, move out of the `planets` folder:
+> > If needed, move out of the `shell-scripts` folder:
 > >
 > > ~~~
 > > $ cd ..
@@ -764,7 +796,7 @@ repository (`git commit`):
 > >
 > > ~~~
 > > $ git add me.txt
-> > $ git commit -m "Add biography file" 
+> > $ git commit -m "Add biography file"
 > > ~~~
 > > {: .language-bash}
 > >

@@ -20,41 +20,42 @@ different changes to each copy.  Version control helps us manage these
 [resolve]({{ page.root }}{% link reference.md %}#resolve) overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
-`mars.txt` currently looks like this in both partners' copies of our `planets`
+`user-input.sh` currently looks like this in both partners' copies of our `shell-script`
 repository:
 
 ~~~
-$ cat mars.txt
+$ cat user-input.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+echo "What is your name?"
+read name
+echo "Hello $name."
 ~~~
 {: .output}
 
 Let's add a line to the collaborator's copy only:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano user-input.sh
+$ cat user-input.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-This line added to Wolfman's copy
+echo "What is your name?"
+read name
+echo "Hello $name."
+#the read command requests user input, we use `$` to recall the variable established by `read`
+#this line is added by Vlad
 ~~~
 {: .output}
 
 and then push the change to GitHub:
 
 ~~~
-$ git add mars.txt
+$ git add user-input.sh
 $ git commit -m "Add a line in our home copy"
 ~~~
 {: .language-bash}
@@ -78,7 +79,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
-To https://github.com/vlad/planets.git
+To https://github.com/vlad/shell-script.git
    29aba7c..dabb4c8  main -> main
 ~~~
 {: .output}
@@ -88,23 +89,24 @@ make a different change to their copy
 *without* updating from GitHub:
 
 ~~~
-$ nano mars.txt
-$ cat mars.txt
+$ nano user-input.sh
+$ cat user-input.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We added a different line in the other copy
+echo "What is your name?"
+read name
+echo "Hello $name."
+#the read command requests user input, we use `$` to recall the variable established by `read`
+#this line is added by them
 ~~~
 {: .output}
 
 We can commit the change locally:
 
 ~~~
-$ git add mars.txt
+$ git add user-input.sh
 $ git commit -m "Add a line in my copy"
 ~~~
 {: .language-bash}
@@ -123,9 +125,9 @@ $ git push origin main
 {: .language-bash}
 
 ~~~
-To https://github.com/vlad/planets.git
+To https://github.com/vlad/shell-script.git
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/vlad/planets.git'
+error: failed to push some refs to 'https://github.com/vlad/shell-script.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
@@ -153,35 +155,36 @@ remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (1/1), done.
 remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://github.com/vlad/shell-script
  * branch            main     -> FETCH_HEAD
     29aba7c..dabb4c8  main     -> origin/main
-Auto-merging mars.txt
-CONFLICT (content): Merge conflict in mars.txt
+Auto-merging user-input.sh
+CONFLICT (content): Merge conflict in user-input.sh
 Automatic merge failed; fix conflicts and then commit the result.
 ~~~
 {: .output}
 
 The `git pull` command updates the local repository to include those
 changes already included in the remote repository.
-After the changes from remote branch have been fetched, Git detects that changes made to the local copy 
+After the changes from remote branch have been fetched, Git detects that changes made to the local copy
 overlap with those made to the remote repository, and therefore refuses to merge the two versions to
 stop us from trampling on our previous work. The conflict is marked in
 in the affected file:
 
 ~~~
-$ cat mars.txt
+$ cat user-input.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
+echo "What is your name?"
+read name
+echo "Hello $name."
+#the read command requests user input, we use `$` to recall the variable established by `read`
 <<<<<<< HEAD
 We added a different line in the other copy
 =======
-This line added to Wolfman's copy
+This line added to their copy
 >>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
 ~~~
 {: .output}
@@ -200,24 +203,25 @@ or get rid of the change entirely.
 Let's replace both so that the file looks like this:
 
 ~~~
-$ cat mars.txt
+$ cat user-input.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
+echo "What is your name?"
+read name
+echo "Hello $name."
+#the read command requests user input, we use `$` to recall the variable established by `read`
+#We removed the conflict on this line
 ~~~
 {: .output}
 
 To finish merging,
-we add `mars.txt` to the changes being made by the merge
+we add `user-input.sh` to the changes being made by the merge
 and then commit:
 
 ~~~
-$ git add mars.txt
+$ git add user-input.sh
 $ git status
 ~~~
 {: .language-bash}
@@ -229,7 +233,7 @@ All conflicts fixed but you are still merging.
 
 Changes to be committed:
 
-	modified:   mars.txt
+	modified:   user-input.sh
 
 ~~~
 {: .output}
@@ -259,7 +263,7 @@ Compressing objects: 100% (6/6), done.
 Writing objects: 100% (6/6), 645 bytes | 645.00 KiB/s, done.
 Total 6 (delta 4), reused 0 (delta 0)
 remote: Resolving deltas: 100% (4/4), completed with 2 local objects.
-To https://github.com/vlad/planets.git
+To https://github.com/vlad/shell-script.git
    dabb4c8..2abf2b1  main -> main
 ~~~
 {: .output}
@@ -279,12 +283,12 @@ remote: Counting objects: 100% (10/10), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0
 Unpacking objects: 100% (6/6), done.
-From https://github.com/vlad/planets
+From https://github.com/vlad/shell-script
  * branch            main     -> FETCH_HEAD
     dabb4c8..2abf2b1  main     -> origin/main
 Updating dabb4c8..2abf2b1
 Fast-forward
- mars.txt | 2 +-
+ user-input.sh | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 ~~~
 {: .output}
@@ -292,15 +296,16 @@ Fast-forward
 We get the merged file:
 
 ~~~
-$ cat mars.txt
+$ cat user-input.sh
 ~~~
 {: .language-bash}
 
 ~~~
-Cold and dry, but everything is my favorite color
-The two moons may be a problem for Wolfman
-But the Mummy will appreciate the lack of humidity
-We removed the conflict on this line
+echo "What is your name?"
+read name
+echo "Hello $name."
+#the read command requests user input, we use `$` to recall the variable established by `read`
+#We removed the conflict on this line
 ~~~
 {: .output}
 
@@ -344,30 +349,30 @@ Conflicts can also be minimized with project management strategies:
 >
 > > ## Solution
 > >
-> > Let's try it. Suppose Dracula takes a picture of Martian surface and
-> > calls it `mars.jpg`.
+> > Let's try it. Suppose We takes a picture and
+> > calls it `ex-file.jpg`.
 > >
-> > If you do not have an image file of Mars available, you can create
+> > If you do not have an image file of ex-file available, you can create
 > > a dummy binary file like this:
 > >
 > > ~~~
-> > $ head -c 1024 /dev/urandom > mars.jpg
-> > $ ls -lh mars.jpg
+> > $ head -c 1024 /dev/urandom > ex-file.jpg
+> > $ ls -lh ex-file.jpg
 > > ~~~
 > > {: .language-bash}
 > >
 > > ~~~
-> > -rw-r--r-- 1 vlad 57095 1.0K Mar  8 20:24 mars.jpg
+> > -rw-r--r-- 1 vlad 57095 1.0K Mar  8 20:24 ex-file.jpg
 > > ~~~
 > > {: .output}
 > >
 > > `ls` shows us that this created a 1-kilobyte file. It is full of
 > > random bytes read from the special file, `/dev/urandom`.
 > >
-> > Now, suppose Dracula adds `mars.jpg` to his repository:
+> > Now, suppose we add `ex-file.jpg` to our repository:
 > >
 > > ~~~
-> > $ git add mars.jpg
+> > $ git add ex-file.jpg
 > > $ git commit -m "Add picture of Martian surface"
 > > ~~~
 > > {: .language-bash}
@@ -375,13 +380,13 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > [main 8e4115c] Add picture of Martian surface
 > >  1 file changed, 0 insertions(+), 0 deletions(-)
-> >  create mode 100644 mars.jpg
+> >  create mode 100644 ex-file.jpg
 > > ~~~
 > > {: .output}
 > >
-> > Suppose that Wolfman has added a similar picture in the meantime.
-> > His is a picture of the Martian sky, but it is *also* called `mars.jpg`.
-> > When Dracula tries to push, he gets a familiar message:
+> > Suppose that our collaborator has added a similar picture in the meantime.
+> > Theirs is a picture of the Martian sky, but it is *also* called `ex-file.jpg`.
+> > When We tried to push, they gets a familiar message:
 > >
 > > ~~~
 > > $ git push origin main
@@ -389,9 +394,9 @@ Conflicts can also be minimized with project management strategies:
 > > {: .language-bash}
 > >
 > > ~~~
-> > To https://github.com/vlad/planets.git
+> > To https://github.com/vlad/shell-script.git
 > >  ! [rejected]        main -> main (fetch first)
-> > error: failed to push some refs to 'https://github.com/vlad/planets.git'
+> > error: failed to push some refs to 'https://github.com/vlad/shell-script.git'
 > > hint: Updates were rejected because the remote contains work that you do
 > > hint: not have locally. This is usually caused by another repository pushing
 > > hint: to the same ref. You may want to first integrate the remote changes
@@ -416,21 +421,21 @@ Conflicts can also be minimized with project management strategies:
 > > remote: Compressing objects: 100% (3/3), done.
 > > remote: Total 3 (delta 0), reused 0 (delta 0)
 > > Unpacking objects: 100% (3/3), done.
-> > From https://github.com/vlad/planets.git
+> > From https://github.com/vlad/shell-script.git
 > >  * branch            main     -> FETCH_HEAD
 > >    6a67967..439dc8c  main     -> origin/main
-> > warning: Cannot merge binary files: mars.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
-> > Auto-merging mars.jpg
-> > CONFLICT (add/add): Merge conflict in mars.jpg
+> > warning: Cannot merge binary files: ex-file.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
+> > Auto-merging ex-file.jpg
+> > CONFLICT (add/add): Merge conflict in ex-file.jpg
 > > Automatic merge failed; fix conflicts and then commit the result.
 > > ~~~
 > > {: .output}
 > >
-> > The conflict message here is mostly the same as it was for `mars.txt`, but
+> > The conflict message here is mostly the same as it was for `user-input.sh`, but
 > > there is one key additional line:
 > >
 > > ~~~
-> > warning: Cannot merge binary files: mars.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
+> > warning: Cannot merge binary files: ex-file.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
 > > ~~~
 > > {: .output}
 > >
@@ -439,13 +444,13 @@ Conflicts can also be minimized with project management strategies:
 > > the version we want to keep. Then we can add and commit this version.
 > >
 > > On the key line above, Git has conveniently given us commit identifiers
-> > for the two versions of `mars.jpg`. Our version is `HEAD`, and Wolfman's
+> > for the two versions of `ex-file.jpg`. Our version is `HEAD`, and their
 > > version is `439dc8c0...`. If we want to use our version, we can use
 > > `git checkout`:
 > >
 > > ~~~
-> > $ git checkout HEAD mars.jpg
-> > $ git add mars.jpg
+> > $ git checkout HEAD ex-file.jpg
+> > $ git add ex-file.jpg
 > > $ git commit -m "Use image of surface instead of sky"
 > > ~~~
 > > {: .language-bash}
@@ -455,12 +460,12 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > {: .output}
 > >
-> > If instead we want to use Wolfman's version, we can use `git checkout` with
-> > Wolfman's commit identifier, `439dc8c0`:
+> > If instead we want to use their version, we can use `git checkout` with
+> > their commit identifier, `439dc8c0`:
 > >
 > > ~~~
-> > $ git checkout 439dc8c0 mars.jpg
-> > $ git add mars.jpg
+> > $ git checkout 439dc8c0 ex-file.jpg
+> > $ git add ex-file.jpg
 > > $ git commit -m "Use image of sky instead of surface"
 > > ~~~
 > > {: .language-bash}
@@ -476,19 +481,19 @@ Conflicts can also be minimized with project management strategies:
 > > image and rename it:
 > >
 > > ~~~
-> > $ git checkout HEAD mars.jpg
-> > $ git mv mars.jpg mars-surface.jpg
-> > $ git checkout 439dc8c0 mars.jpg
-> > $ mv mars.jpg mars-sky.jpg
+> > $ git checkout HEAD ex-file.jpg
+> > $ git mv ex-file.jpg ex-file02.jpg
+> > $ git checkout 439dc8c0 ex-file.jpg
+> > $ mv ex-file.jpg ex-file01.jpg
 > > ~~~
 > > {: .language-bash}
 > >
-> > Then, remove the old `mars.jpg` and add the two new files:
+> > Then, remove the old `ex-file.jpg` and add the two new files:
 > >
 > > ~~~
-> > $ git rm mars.jpg
-> > $ git add mars-surface.jpg
-> > $ git add mars-sky.jpg
+> > $ git rm ex-file.jpg
+> > $ git add ex-file02.jpg
+> > $ git add ex-file01.jpg
 > > $ git commit -m "Use two images: surface and sky"
 > > ~~~
 > > {: .language-bash}
@@ -496,12 +501,12 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > [main 94ae08c] Use two images: surface and sky
 > >  2 files changed, 0 insertions(+), 0 deletions(-)
-> >  create mode 100644 mars-sky.jpg
-> >  rename mars.jpg => mars-surface.jpg (100%)
+> >  create mode 100644 ex-file01.jpg
+> >  rename ex-file.jpg => ex-file02.jpg (100%)
 > > ~~~
 > > {: .output}
 > >
-> > Now both images of Mars are checked into the repository, and `mars.jpg`
+> > Now both images of ex-file are checked into the repository, and `ex-file.jpg`
 > > no longer exists.
 > {: .solution}
 {: .challenge}

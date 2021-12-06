@@ -700,7 +700,7 @@ done
 ~~~
 {: .language-bash}
 
-> ## Committing Multiple Files
+> ## Committing Multiple Files (Still in progress)
 >
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.

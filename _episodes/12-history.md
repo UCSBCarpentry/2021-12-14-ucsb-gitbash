@@ -16,13 +16,14 @@ keypoints:
 - "`git checkout` recovers old versions of files."
 ---
 
+
 As we saw in the previous episode, we can refer to commits by their
 identifiers.  You can refer to the _most recent commit_ of the working
 directory by using the identifier `HEAD`.
 
 We've been adding one line at a time to `for-loop.sh`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
-let's make a change to `for-loop.sh`, adding yet another line.
+let's make a change to `for-loop.sh`, adding commentary using the #.
 
 ~~~
 $ nano for-loop.sh

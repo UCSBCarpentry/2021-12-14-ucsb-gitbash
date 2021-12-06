@@ -649,22 +649,6 @@ repository (`git commit`):
 
 ![The Git Commit Workflow](../fig/git-committing.svg)
 
-> ## Choosing a Commit Message
->
-> Which of the following commit messages would be most appropriate for the
-> last commit made to `ui-example.sh`?
->
-> 1. "Changes"
-> 2. "Added line 'But the Mummy will appreciate the lack of humidity' to ui-example.sh"
-> 3. "Discuss effects of Mars' climate on the Mummy"
->
-> > ## Solution
-> > Answer 1 is not descriptive enough, and the purpose of the commit is unclear;
-> > and answer 2 is redundant to using "git diff" to see what changed in this commit;
-> > but answer 3 is good: short, descriptive, and imperative.
-> {: .solution}
-{: .challenge}
-
 > ## Committing Changes to Git
 >
 > Which command(s) below would save the changes of `myfile.txt`
@@ -698,61 +682,76 @@ repository (`git commit`):
 > {: .solution}
 {: .challenge}
 
+we will make a different type of shell script, using for loops. Make a subdirectory called `for-loop` that is inside of `shell-scripts`, so that your working directory is `~/desktop/shell-scripts/for-loop`.
+Inside of `~/desktop/shell-scripts/for-loop`, create a shell script file called `for-loop.sh`.
+
+The line of code below takes a number from the user, and deals out numbers from a list.
+~~~
+#!/bin/bash
+cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
+
+echo "how many cards would you like?"
+read value
+
+for i in $(seq 1 $value);
+do echo ${cards[RANDOM%${#cards[@]}]};
+
+done
+~~~
+{: .language-bash}
+
 > ## Committing Multiple Files
 >
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.
 >
-> 1. Add some text to `ui-example.sh` noting your decision
-> to consider Venus as a base
-> 2. Create a new file `venus.txt` with your initial thoughts
-> about Venus as a base for you and your friends
+> 1. Add some text to `for-loop.sh`
+> 2. Create a new file `for-loop.sh` with your initial thoughts
 > 3. Add changes from both files to the staging area,
 > and commit those changes.
 >
 > > ## Solution
 > >
-> > First we make our changes to the `ui-example.sh` and `venus.txt` files:
+> > First we make our changes to the for-loop.sh` files:
 > > ~~~
-> > $ nano ui-example.sh
-> > $ cat ui-example.sh
+> > #!/bin/bash
+> > cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
+> >
+> > echo "how many cards would you like?"
+> > read value
+> >
+> > for i in $(seq 1 $value);
+> > do echo ${cards[RANDOM%${#cards[@]}]};
+> >
+> > done
 > > ~~~
 > > {: .language-bash}
 > > ~~~
-> > Maybe I should start with a base on Venus.
-> > ~~~
-> > {: .output}
-> > ~~~
-> > $ nano venus.txt
-> > $ cat venus.txt
+> > $ nano for-loop.sh
+> > $ cat for-loop.sh
 > > ~~~
 > > {: .language-bash}
-> > ~~~
-> > Venus is a nice planet and I definitely should consider it as a base.
-> > ~~~
-> > {: .output}
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add ui-example.sh venus.txt
+> > $ git add for-loop.sh
 > > ~~~
 > > {: .language-bash}
 > > Or with multiple commands:
 > > ~~~
-> > $ git add ui-example.sh
-> > $ git add venus.txt
+> > $ git add for-loop.sh
 > > ~~~
 > > {: .language-bash}
 > > Now the files are ready to commit. You can check that using `git status`. If you are ready to commit use:
 > > ~~~
-> > $ git commit -m "Write plans to start a base on Venus"
+> > $ git commit -m "Add in for loop example script"
 > > ~~~
 > > {: .language-bash}
 > > ~~~
 > > [main cc127c2]
-> >  Write plans to start a base on Venus
+> >  Add in for loop example script
 > >  2 files changed, 2 insertions(+)
-> >  create mode 100644 venus.txt
+> >  create mode 100644 for-loop.sh
 > > ~~~
 > > {: .output}
 > {: .solution}

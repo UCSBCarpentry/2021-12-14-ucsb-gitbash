@@ -180,8 +180,8 @@ Modify the block below if there are any special requirements.
     Participants must have access to a computer with a
     Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on.
   {% endif %}
-  They should have a few specific software packages installed (listed <a href="#setup">below</a>).
-</p>
+  Before the workshop, please install the software packages (listed <a 
+href="#setup">below</a>). </p>
 
 {% comment %}
 ACCESSIBILITY

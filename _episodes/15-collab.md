@@ -42,15 +42,15 @@ To clone the Owner's repo into
 her `Desktop` folder, the Collaborator enters:
 
 ~~~
-$ git clone https://github.com/vlad/planets.git ~/Desktop/vlad-planets
+$ git clone https://github.com/vlad/shell-scripts.git ~/Desktop/vlad-shell-scripts
 ~~~
 {: .language-bash}
 
 Replace 'vlad' with the Owner's username.
 
 If you choose to clone without the clone path
-(`~/Desktop/vlad-planets`) specified at the end,
-you will clone inside your own planets folder!
+(`~/Desktop/vlad-shell-scripts`) specified at the end,
+you will clone inside your own shell-scripts folder!
 Make sure to navigate to the `Desktop` folder first.
 
 ![After Creating Clone of Repository](../fig/github-collaboration.svg)
@@ -59,26 +59,37 @@ The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
 
 ~~~
-$ cd ~/Desktop/vlad-planets
-$ nano pluto.txt
-$ cat pluto.txt
+$ cd ~/Desktop/vlad-shell-scripts/loops
+$ nano for-loop.sh
+$ cat for-loop.sh
 ~~~
 {: .language-bash}
 
 ~~~
-It is so a planet!
+#!/bin/bash
+cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
+
+echo "how many cards would you like?"
+read value
+
+for i in $(seq 1 $value);
+do echo ${cards[RANDOM%${#cards[@]}]};
+#do printf "%s\n" ${cards[@]} | shuf |head -1;
+done
+
+#for loop iterates over value given by user
 ~~~
 {: .output}
 
 ~~~
-$ git add pluto.txt
-$ git commit -m "Add notes about Pluto"
+$ git add for-loop.sh
+$ git commit -m "Add notes about the for-loop"
 ~~~
 {: .language-bash}
 
 ~~~
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ create mode 100644 for-loop.sh
 ~~~
 {: .output}
 
@@ -96,7 +107,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/planets.git
+To https://github.com/vlad/shell-scripts.git
    9272da5..29aba7c  main -> main
 ~~~
 {: .output}
@@ -105,7 +116,7 @@ Note that we didn't have to create a remote called `origin`: Git uses this
 name by default when we clone a repository.  (This is why `origin` was a
 sensible choice earlier when we were setting up remotes by hand.)
 
-Take a look at the Owner’s repository on GitHub again, and you should be 
+Take a look at the Owner’s repository on GitHub again, and you should be
 able to see the new commit made by the Collaborator. You may need to refresh
 your browser to see the new commit.
 
@@ -113,12 +124,12 @@ your browser to see the new commit.
 >
 > In this episode and the previous one, our local repository has had
 > a single "remote", called `origin`. A remote is a copy of the repository
-> that is hosted somewhere else, that we can push to and pull from, and 
-> there's no reason that you have to work with only one. For example, 
+> that is hosted somewhere else, that we can push to and pull from, and
+> there's no reason that you have to work with only one. For example,
 > on some large projects you might have your own copy in your own GitHub
 > account (you'd probably call this `origin`) and also the main "upstream"
 > project repository (let's call this `upstream` for the sake of examples).
-> You would pull from `upstream` from time to 
+> You would pull from `upstream` from time to
 > time to get the latest updates that other people have committed.
 >
 > Remember that the name you give to a remote only exists locally. It's
@@ -131,13 +142,13 @@ your browser to see the new commit.
 > * `git remote -v` lists all the remotes that are configured (we already used
 > this in the last episode)
 > * `git remote add [name] [url]` is used to add a new remote
-> * `git remote remove [name]` removes a remote. Note that it doesn't affect the 
+> * `git remote remove [name]` removes a remote. Note that it doesn't affect the
 > remote repository at all - it just removes the link to it from the local repo.
-> * `git remote set-url [name] [newurl]` changes the URL that is associated 
+> * `git remote set-url [name] [newurl]` changes the URL that is associated
 > with the remote. This is useful if it has moved, e.g. to a different GitHub
 > account, or from GitHub to a different hosting service. Or, if we made a typo when
 > adding it!
-> * `git remote rename [oldname] [newname]` changes the local alias by which a remote 
+> * `git remote rename [oldname] [newname]` changes the local alias by which a remote
 > is known - its name. For example, one could use this to change `upstream` to `fred`.
 {: .callout}
 
@@ -154,14 +165,14 @@ remote: Counting objects: 100% (4/4), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From https://github.com/vlad/shell-scripts
  * branch            main     -> FETCH_HEAD
    9272da5..29aba7c  main     -> origin/main
 Updating 9272da5..29aba7c
 Fast-forward
- pluto.txt | 1 +
+ for-loop.sh | 1 +
  1 file changed, 1 insertion(+)
- create mode 100644 pluto.txt
+ create mode 100644 for-loop.sh
 ~~~
 {: .output}
 
@@ -201,7 +212,7 @@ GitHub) are back in sync.
 > > them. Then by running ```git diff main origin/main``` the Collaborator
 > > will see the changes output in the terminal.
 > >
-> > On GitHub, the Collaborator can go to the repository and click on 
+> > On GitHub, the Collaborator can go to the repository and click on
 > > "commits" to view the most recent commits pushed to the repository.
 > {: .solution}
 {: .challenge}

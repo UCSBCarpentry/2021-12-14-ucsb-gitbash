@@ -83,7 +83,7 @@ again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
 
 ~~~
-$ git diff HEAD~3 for-loop.sh
+$ git diff HEAD~3 for-loop.sh 
 ~~~
 {: .language-bash}
 
@@ -116,6 +116,7 @@ working directory that we see by using `git diff`.
 
 ~~~
 $ git show HEAD~3 for-loop.sh
+If this doesn't work, git show HEAD for-loop.sh (pc)
 ~~~
 {: .language-bash}
 

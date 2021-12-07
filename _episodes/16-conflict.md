@@ -1,4 +1,4 @@
-ex-files---
+---
 title: Conflicts
 teaching: 15
 exercises: 0

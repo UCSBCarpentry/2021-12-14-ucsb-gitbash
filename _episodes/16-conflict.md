@@ -1,4 +1,4 @@
----
+ex-files---
 title: Conflicts
 teaching: 15
 exercises: 0
@@ -48,7 +48,7 @@ echo "What is your name?"
 read name
 echo "Hello $name."
 #the read command requests user input, we use `$` to recall the variable established by `read`
-#this line is added by Vlad
+#this line is added by collaborator
 ~~~
 {: .output}
 
@@ -79,7 +79,7 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
-To https://github.com/vlad/shell-script.git
+To https://github.com/user/shell-script.git
    29aba7c..dabb4c8  main -> main
 ~~~
 {: .output}
@@ -99,7 +99,7 @@ echo "What is your name?"
 read name
 echo "Hello $name."
 #the read command requests user input, we use `$` to recall the variable established by `read`
-#this line is added by them
+#this line is added by Owner
 ~~~
 {: .output}
 
@@ -125,9 +125,9 @@ $ git push origin main
 {: .language-bash}
 
 ~~~
-To https://github.com/vlad/shell-script.git
+To https://github.com/user/shell-script.git
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/vlad/shell-script.git'
+error: failed to push some refs to 'https://github.com/user/shell-script.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
@@ -155,7 +155,7 @@ remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (1/1), done.
 remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/shell-script
+From https://github.com/user/shell-script
  * branch            main     -> FETCH_HEAD
     29aba7c..dabb4c8  main     -> origin/main
 Auto-merging user-input.sh
@@ -263,7 +263,7 @@ Compressing objects: 100% (6/6), done.
 Writing objects: 100% (6/6), 645 bytes | 645.00 KiB/s, done.
 Total 6 (delta 4), reused 0 (delta 0)
 remote: Resolving deltas: 100% (4/4), completed with 2 local objects.
-To https://github.com/vlad/shell-script.git
+To https://github.com/user/shell-script.git
    dabb4c8..2abf2b1  main -> main
 ~~~
 {: .output}
@@ -283,7 +283,7 @@ remote: Counting objects: 100% (10/10), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0
 Unpacking objects: 100% (6/6), done.
-From https://github.com/vlad/shell-script
+From https://github.com/user/shell-script
  * branch            main     -> FETCH_HEAD
     dabb4c8..2abf2b1  main     -> origin/main
 Updating dabb4c8..2abf2b1
@@ -350,29 +350,29 @@ Conflicts can also be minimized with project management strategies:
 > > ## Solution
 > >
 > > Let's try it. Suppose We takes a picture and
-> > calls it `ex-file.jpg`.
+> > calls it example files, `ex-files.jpg`.
 > >
-> > If you do not have an image file of ex-file available, you can create
+> > If you do not have an image file of ex-files available, you can create
 > > a dummy binary file like this:
 > >
 > > ~~~
-> > $ head -c 1024 /dev/urandom > ex-file.jpg
-> > $ ls -lh ex-file.jpg
+> > $ head -c 1024 /dev/urandom > ex-files.jpg
+> > $ ls -lh ex-files.jpg
 > > ~~~
 > > {: .language-bash}
 > >
 > > ~~~
-> > -rw-r--r-- 1 vlad 57095 1.0K Mar  8 20:24 ex-file.jpg
+> > -rw-r--r-- 1 user 57095 1.0K Mar  8 20:24 ex-files.jpg
 > > ~~~
 > > {: .output}
 > >
 > > `ls` shows us that this created a 1-kilobyte file. It is full of
 > > random bytes read from the special file, `/dev/urandom`.
 > >
-> > Now, suppose we add `ex-file.jpg` to our repository:
+> > Now, suppose we add `ex-files.jpg` to our repository:
 > >
 > > ~~~
-> > $ git add ex-file.jpg
+> > $ git add ex-files.jpg
 > > $ git commit -m "Add picture of Martian surface"
 > > ~~~
 > > {: .language-bash}
@@ -380,12 +380,12 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > [main 8e4115c] Add picture of Martian surface
 > >  1 file changed, 0 insertions(+), 0 deletions(-)
-> >  create mode 100644 ex-file.jpg
+> >  create mode 100644 ex-files.jpg
 > > ~~~
 > > {: .output}
 > >
 > > Suppose that our collaborator has added a similar picture in the meantime.
-> > Theirs is a picture of the Martian sky, but it is *also* called `ex-file.jpg`.
+> > Theirs is a picture of the Martian sky, but it is *also* called `ex-files.jpg`.
 > > When We tried to push, they gets a familiar message:
 > >
 > > ~~~
@@ -394,9 +394,9 @@ Conflicts can also be minimized with project management strategies:
 > > {: .language-bash}
 > >
 > > ~~~
-> > To https://github.com/vlad/shell-script.git
+> > To https://github.com/user/shell-script.git
 > >  ! [rejected]        main -> main (fetch first)
-> > error: failed to push some refs to 'https://github.com/vlad/shell-script.git'
+> > error: failed to push some refs to 'https://github.com/user/shell-script.git'
 > > hint: Updates were rejected because the remote contains work that you do
 > > hint: not have locally. This is usually caused by another repository pushing
 > > hint: to the same ref. You may want to first integrate the remote changes
@@ -421,12 +421,12 @@ Conflicts can also be minimized with project management strategies:
 > > remote: Compressing objects: 100% (3/3), done.
 > > remote: Total 3 (delta 0), reused 0 (delta 0)
 > > Unpacking objects: 100% (3/3), done.
-> > From https://github.com/vlad/shell-script.git
+> > From https://github.com/user/shell-script.git
 > >  * branch            main     -> FETCH_HEAD
 > >    6a67967..439dc8c  main     -> origin/main
-> > warning: Cannot merge binary files: ex-file.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
-> > Auto-merging ex-file.jpg
-> > CONFLICT (add/add): Merge conflict in ex-file.jpg
+> > warning: Cannot merge binary files: ex-files.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
+> > Auto-merging ex-files.jpg
+> > CONFLICT (add/add): Merge conflict in ex-files.jpg
 > > Automatic merge failed; fix conflicts and then commit the result.
 > > ~~~
 > > {: .output}
@@ -435,7 +435,7 @@ Conflicts can also be minimized with project management strategies:
 > > there is one key additional line:
 > >
 > > ~~~
-> > warning: Cannot merge binary files: ex-file.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
+> > warning: Cannot merge binary files: ex-files.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
 > > ~~~
 > > {: .output}
 > >
@@ -444,13 +444,13 @@ Conflicts can also be minimized with project management strategies:
 > > the version we want to keep. Then we can add and commit this version.
 > >
 > > On the key line above, Git has conveniently given us commit identifiers
-> > for the two versions of `ex-file.jpg`. Our version is `HEAD`, and their
+> > for the two versions of `ex-files.jpg`. Our version is `HEAD`, and their
 > > version is `439dc8c0...`. If we want to use our version, we can use
 > > `git checkout`:
 > >
 > > ~~~
-> > $ git checkout HEAD ex-file.jpg
-> > $ git add ex-file.jpg
+> > $ git checkout HEAD ex-files.jpg
+> > $ git add ex-files.jpg
 > > $ git commit -m "Use image of surface instead of sky"
 > > ~~~
 > > {: .language-bash}
@@ -464,8 +464,8 @@ Conflicts can also be minimized with project management strategies:
 > > their commit identifier, `439dc8c0`:
 > >
 > > ~~~
-> > $ git checkout 439dc8c0 ex-file.jpg
-> > $ git add ex-file.jpg
+> > $ git checkout 439dc8c0 ex-files.jpg
+> > $ git add ex-files.jpg
 > > $ git commit -m "Use image of sky instead of surface"
 > > ~~~
 > > {: .language-bash}
@@ -481,19 +481,19 @@ Conflicts can also be minimized with project management strategies:
 > > image and rename it:
 > >
 > > ~~~
-> > $ git checkout HEAD ex-file.jpg
-> > $ git mv ex-file.jpg ex-file02.jpg
-> > $ git checkout 439dc8c0 ex-file.jpg
-> > $ mv ex-file.jpg ex-file01.jpg
+> > $ git checkout HEAD ex-files.jpg
+> > $ git mv ex-files.jpg ex-files02.jpg
+> > $ git checkout 439dc8c0 ex-files.jpg
+> > $ mv ex-files.jpg ex-files01.jpg
 > > ~~~
 > > {: .language-bash}
 > >
-> > Then, remove the old `ex-file.jpg` and add the two new files:
+> > Then, remove the old `ex-files.jpg` and add the two new files:
 > >
 > > ~~~
-> > $ git rm ex-file.jpg
-> > $ git add ex-file02.jpg
-> > $ git add ex-file01.jpg
+> > $ git rm ex-files.jpg
+> > $ git add ex-files02.jpg
+> > $ git add ex-files01.jpg
 > > $ git commit -m "Use two images: surface and sky"
 > > ~~~
 > > {: .language-bash}
@@ -501,12 +501,12 @@ Conflicts can also be minimized with project management strategies:
 > > ~~~
 > > [main 94ae08c] Use two images: surface and sky
 > >  2 files changed, 0 insertions(+), 0 deletions(-)
-> >  create mode 100644 ex-file01.jpg
-> >  rename ex-file.jpg => ex-file02.jpg (100%)
+> >  create mode 100644 ex-files01.jpg
+> >  rename ex-files.jpg => ex-files02.jpg (100%)
 > > ~~~
 > > {: .output}
 > >
-> > Now both images of ex-file are checked into the repository, and `ex-file.jpg`
+> > Now both images of ex-files are checked into the repository, and `ex-files.jpg`
 > > no longer exists.
 > {: .solution}
 {: .challenge}

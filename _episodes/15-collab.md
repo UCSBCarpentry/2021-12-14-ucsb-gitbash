@@ -42,14 +42,14 @@ To clone the Owner's repo into
 her `Desktop` folder, the Collaborator enters:
 
 ~~~
-$ git clone https://github.com/User/shell-scripts.git ~/Desktop/your.name-shell-scripts
+$ git clone https://github.com/User/shell-scripts.git ~/Desktop/user.name-shell-scripts
 ~~~
 {: .language-bash}
 
-Replace 'your name' with the Owner's username or name.
+Replace 'user name' with the Owner's username or name.
 
 If you choose to clone without the clone path
-(`~/Desktop/your.name-shell-scripts`) specified at the end,
+(`~/Desktop/user.name-shell-scripts`) specified at the end,
 you will clone inside your own shell-scripts folder!
 Make sure to navigate to the `Desktop` folder first.
 
@@ -59,7 +59,7 @@ The Collaborator can now make a change in her clone of the Owner's repository,
 exactly the same way as we've been doing before:
 
 ~~~
-$ cd ~/Desktop/your.name-shell-scripts/loops
+$ cd ~/Desktop/user.name-shell-scripts/loops
 $ nano for-loop.sh
 $ cat for-loop.sh
 ~~~
@@ -107,7 +107,7 @@ Delta compression using up to 4 threads.
 Compressing objects: 100% (2/2), done.
 Writing objects: 100% (3/3), 306 bytes, done.
 Total 3 (delta 0), reused 0 (delta 0)
-To https://github.com/vlad/shell-scripts.git
+To https://github.com/user/shell-scripts.git
    9272da5..29aba7c  main -> main
 ~~~
 {: .output}

@@ -18,8 +18,8 @@ keypoints:
 - "Write a commit message that accurately describes your changes."
 ---
 
-First let's make sure we're still in the right directory.
-We still need a subdirectory, `user-input`, inside of `shell-scripts`.
+First let's make sure we're still in the right directory. The first type of shell script we are using is called user input.
+So, we still need a subdirectory, `user-input`, inside of `shell-scripts`.
 Confirm you have `~/Desktop/shell-scripts/user-input` and that it's your working directory.
 If you are not inside `~/Desktop/shell-scripts/user-input`, recall how to move to through directories and how to make a subdirectory.
 
@@ -205,7 +205,7 @@ $ git log
 {: .language-bash}
 
 ~~~
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+commit 8d4f409759ab29069329922c15d51ebf856aa065
 Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
@@ -500,19 +500,19 @@ $ git log
 {: .language-bash}
 
 ~~~
-commit 005937fbe2a98fb83f0ade869025dc2636b4dad5 (HEAD -> main)
+commit d2f536d6198f12ebba1849af49405a4f54845dd6 (HEAD -> main)
 Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 10:14:07 2013 -0400
 
     Adding more about read command
 
-commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
+commit b798ee602bd76b92c39d8c62c6637d36109365e4
 Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 10:07:21 2013 -0400
 
     Add comment on what read command does
 
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
+commit 8d4f409759ab29069329922c15d51ebf856aa065
 Author: user <user@ucsb.edu>
 Date:   Thu Aug 22 09:51:46 2013 -0400
 
@@ -641,6 +641,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >
 >    ~~~
 >    $ git commit -m "Add in subdir for loops"
+>    $ cd loops
 >    ~~~
 >    {: .language-bash}
 >
@@ -738,9 +739,10 @@ repository (`git commit`):
 > > ~~~
 > > {: .language-bash}
 > > ~~~
-> > [main 0313f15] Add in loop example
+> > [main 7f9e498] add in for loop example
 > > 2 files changed, 3 insertions(+)
-> > create mode 100644 loops/for-loop-notes.txt
+> > create mode 100644 for-loop.sh
+> > create mode 100644 notes-for-loop.txt
 > > ~~~
 > > {: .output}
 > {: .solution}

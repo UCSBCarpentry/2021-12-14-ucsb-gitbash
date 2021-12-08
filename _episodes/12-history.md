@@ -83,19 +83,18 @@ again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
 
 ~~~
-$ git diff HEAD~3 for-loop.sh 
+$ git diff HEAD~2 for-loop.sh
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/loops/for-loop.sh b/loops/for-loop.sh
-new file mode 100644
-index 0000000..8975db5
---- /dev/null
-+++ b/loops/for-loop.sh
-@@ -0,0 +1,13 @@
-+# for-loop example
-+# we will be creating a program that "deals" values at random
+diff --git a/for-loop.sh b/for-loop.sh
+index de9b2a4..8006c63 100644
+--- a/for-loop.sh
++++ b/for-loop.sh
+@@ -1,2 +1,13 @@
+ # for-loop example
+ # we will be creating a program that "deals" values at random
 +#!/bin/bash
 +cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
 +
@@ -106,7 +105,7 @@ index 0000000..8975db5
 +do echo ${cards[RANDOM%${#cards[@]}]};
 +
 +done
-+# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
++#`${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
 {: .output}
 
@@ -115,35 +114,20 @@ well as the commit message, rather than the _differences_ between a commit and o
 working directory that we see by using `git diff`.
 
 ~~~
-$ git show HEAD~3 for-loop.sh
-If this doesn't work, git show HEAD for-loop.sh (pc)
+$ git show HEAD~2 for-loop.sh
 ~~~
 {: .language-bash}
 
 ~~~
-commit f22b25e3233b4645dabd0d81e651fe074bd8e73b
-Author: User <User@ucsb.edu>
-Date:   Thu Aug 22 09:51:46 2013 -0400
+commit 94456da74c0fd245cadf7b5e35eef29580f53ee5
+Author: Amanda Ho <amandapho@ucsb.edu>
+Date:   Tue Dec 7 15:18:58 2021 -0800
 
-    Adding in an example script that uses for loop
+    Add in subdir for loops
 
-diff --git a/loops/for-loop.sh b/loops/for-loop.sh
-index de9b2a4..9dd28bc 100644
---- a/loops/for-loop.sh
-+++ b/loops/for-loop.sh
-@@ -1,2 +1,12 @@
-# for-loop example
-# we will be creating a program that "deals" values at random
-+#!/bin/bash
-+cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
-+
-+echo "how many cards would you like?"
-+read value
-+
-+for i in $(seq 1 $value);
-+do echo ${cards[RANDOM%${#cards[@]}]};
-+
-+done
+diff --git a/loops/for-loops.sh b/loops/for-loops.sh
+new file mode 100644
+index 0000000..e69de29
 ~~~
 {: .output}
 
@@ -162,25 +146,34 @@ These are unique IDs for the changes,
 and "unique" really does mean unique:
 every change to any set of files on any computer
 has a unique 40-character identifier.
-Our comment addition was given the ID
-`f22b25e3233b4645dabd0d81e651fe074bd8e73b`,
+Our `HEAD~2` comment addition was given the ID
+`7f9e4987af8d390eac5205e9a760e3f72204041c`,
 so let's try this:
 
 ~~~
-$ git diff fd73b8d5dd250790131e66918a94df424c9c69cf for-loop.sh
+$ git diff 94456da74c0fd245cadf7b5e35eef29580f53ee5 for-loop.sh
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/loops/for-loop.sh b/loops/for-loop.sh
-index 9dd28bc..8975db5 100644
---- a/loops/for-loop.sh
-+++ b/loops/for-loop.sh
-@@ -10,3 +10,4 @@ for i in $(seq 1 $value);
- do echo ${cards[RANDOM%${#cards[@]}]};
-
- done
-+# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
+diff --git a/for-loop.sh b/for-loop.sh
+index de9b2a4..8006c63 100644
+--- a/for-loop.sh
++++ b/for-loop.sh
+@@ -1,2 +1,13 @@
+ # for-loop example
+ # we will be creating a program that "deals" values at random
++#!/bin/bash
++cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
++
++echo "how many cards would you like?"
++read value
++
++for i in $(seq 1 $value);
++do echo ${cards[RANDOM%${#cards[@]}]};
++
++done
++#`${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
 {: .output}
 
@@ -189,20 +182,29 @@ but typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters (typically seven for normal size projects):
 
 ~~~
-$ git diff fd73b8d for-loop.sh
+$ git diff 94456da for-loop.sh
 ~~~
 {: .language-bash}
 
 ~~~
-diff --git a/loops/for-loop.sh b/loops/for-loop.sh
-index 9dd28bc..8975db5 100644
---- a/loops/for-loop.sh
-+++ b/loops/for-loop.sh
-@@ -10,3 +10,4 @@ for i in $(seq 1 $value);
- do echo ${cards[RANDOM%${#cards[@]}]};
-
- done
-+# `${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
+diff --git a/for-loop.sh b/for-loop.sh
+index de9b2a4..8006c63 100644
+--- a/for-loop.sh
++++ b/for-loop.sh
+@@ -1,2 +1,13 @@
+ # for-loop example
+ # we will be creating a program that "deals" values at random
++#!/bin/bash
++cards=(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10)
++
++echo "how many cards would you like?"
++read value
++
++for i in $(seq 1 $value);
++do echo ${cards[RANDOM%${#cards[@]}]};
++
++done
++#`${cards[RANDOM%${#cards[@]}]}` command randomly selects values from `cards`
 ~~~
 {: .output}
 
@@ -266,7 +268,7 @@ If we want to go back even further,
 we can use a commit identifier instead:
 
 ~~~
-$ git checkout f22b25e for-loop.sh
+$ git checkout 94456da for-loops.sh
 ~~~
 {: .language-bash}
 
@@ -274,11 +276,6 @@ $ git checkout f22b25e for-loop.sh
 $ cat for-loop.sh
 ~~~
 {: .language-bash}
-
-~~~
-Cold and dry, but everything is my favorite color
-~~~
-{: .output}
 
 ~~~
 $ git status
@@ -309,21 +306,21 @@ $ git checkout HEAD for-loop.sh
 > Above we used
 >
 > ~~~
-> $ git checkout f22b25e for-loop.sh
+> $ git checkout 94456da for-loops.sh
 > ~~~
 > {: .language-bash}
 >
-> to revert `for-loop.sh` to its state after the commit `f22b25e`. But be careful!
+> to revert `for-loop.sh` to its state after the commit `94456da`. But be careful!
 > The command `checkout` has other important functionalities and Git will misunderstand
 > your intentions if you are not accurate with the typing. For example,
 > if you forget `for-loop.sh` in the previous command.
 >
 > ~~~
-> $ git checkout f22b25e
+> $ git checkout 94456da
 > ~~~
 > {: .language-bash}
 > ~~~
-> Note: checking out 'f22b25e'.
+> Note: checking out '94456da'.
 >
 > You are in 'detached HEAD' state. You can look around, make experimental
 > changes and commit them, and you can discard any commits you make in this
@@ -334,7 +331,7 @@ $ git checkout HEAD for-loop.sh
 >
 >  git checkout -b <new-branch-name>
 >
-> HEAD is now at f22b25e Start notes on Mars as a base
+> HEAD is now at 94456da
 > ~~~
 > {: .error}
 >
@@ -468,31 +465,31 @@ moving backward and forward in time becomes much easier.
 > What is the output of the last command in
 >
 > ~~~
-> $ cd planets
-> $ echo "Venus is beautiful and full of love" > venus.txt
-> $ git add venus.txt
-> $ echo "Venus is too hot to be suitable as a base" >> venus.txt
-> $ git commit -m "Comment on Venus as an unsuitable base"
-> $ git checkout HEAD venus.txt
-> $ cat venus.txt #this will print the contents of venus.txt to the screen
+> $ cd loops
+> $ echo "you can loop through lists and sequences" > notes-for-loop.txt
+> $ git add notes-for-loop.txt
+> $ echo "You can also nest loops inside another." >> notes-for-loop.txt
+> $ git commit -m "More notes on loops"
+> $ git checkout HEAD notes-for-loop.txt
+> $ cat notes-for-loop.txt #this will print the contents
 > ~~~
 > {: .language-bash}
 >
 > 1. ~~~
->    Venus is too hot to be suitable as a base
+>    For loops start with `for` and ends with `done`.
 >    ~~~
 >    {: .output}
 > 2. ~~~
->    Venus is beautiful and full of love
+>    you can loop through lists and sequences
 >    ~~~
 >    {: .output}
 > 3. ~~~
->    Venus is beautiful and full of love
->    Venus is too hot to be suitable as a base
+>    For loops start with `for` and ends with `done`.
+>    You can loop through lists and sequences.
 >    ~~~
 >    {: .output}
 > 4. ~~~
->    Error because you have changed venus.txt without committing the changes
+>    Error because you have changed notes-for-loop.txt without committing the changes
 >    ~~~
 >    {: .output}
 >
@@ -500,21 +497,21 @@ moving backward and forward in time becomes much easier.
 > >
 > > The answer is 2.
 > >
-> > The command `git add venus.txt` places the current version of `venus.txt` into the staging area.
+> > The command `git add notes-for-loop.txt` places the current version of `notes-for-loop.txt` into the staging area.
 > > The changes to the file from the second `echo` command are only applied to the working copy,
 > > not the version in the staging area.
 > >
-> > So, when `git commit -m "Comment on Venus as an unsuitable base"` is executed,
-> > the version of `venus.txt` committed to the repository is the one from the staging area and
+> > So, when `git commit -m "More notes on loops"` is executed,
+> > the version of `notes-for-loop.txt` committed to the repository is the one from the staging area and
 > > has only one line.
 > >  
 > >  At this time, the working copy still has the second line (and
-> >  `git status` will show that the file is modified). However, `git checkout HEAD venus.txt`
-> >  replaces the working copy with the most recently committed version of `venus.txt`.
+> >  `git status` will show that the file is modified). However, `git checkout HEAD notes-for-loop.txt`
+> >  replaces the working copy with the most recently committed version of `notes-for-loop.txt`.
 > >  
-> >  So, `cat venus.txt` will output
+> >  So, `notes-for-loop.txt` will output
 > >  ~~~
-> >  Venus is beautiful and full of love.
+> >  For loops start with `for` and ends with `done`.
 > > ~~~
 > > {: .output}
 > {: .solution}

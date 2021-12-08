@@ -120,7 +120,7 @@ $ git show HEAD~2 for-loop.sh
 
 ~~~
 commit 94456da74c0fd245cadf7b5e35eef29580f53ee5
-Author: Amanda Ho <amandapho@ucsb.edu>
+Author: User <user@ucsb.edu>
 Date:   Tue Dec 7 15:18:58 2021 -0800
 
     Add in subdir for loops
@@ -346,7 +346,7 @@ we must use the commit number that identifies the state of the repository
 A common mistake is to use the number of
 the commit in which we made the change we're trying to discard.
 In the example below, we want to retrieve the state from before the most
-recent commit (`HEAD~1`), which is commit `f22b25e`:
+recent commit (`HEAD~1`), which is commit `94456da`:
 
 ![Git Checkout](../fig/git-checkout.svg)
 

@@ -1,4 +1,4 @@
-user.name/---
+---
 title: Remotes in GitHub
 teaching: 45
 exercises: 0

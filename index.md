@@ -180,7 +180,7 @@ Modify the block below if there are any special requirements.
     Participants must have access to a computer with a
     Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on.
   {% endif %}
-  Before the workshop, please install the software packages (listed <a 
+  Before the workshop, please install the software packages (listed <a
 href="#setup">below</a>). </p>
 
 {% comment %}
@@ -396,20 +396,14 @@ please preview your site before committing, and make sure to run
   Library Carpentry
   {% endif %}
   workshop,
-  you will need access items as described below.
+  you will need access to software as described below.
   In addition, you will need an up-to-date web browser.
-
-<ul>The Bash Shell</ul>
-<ul>Git</ul>
-<ul><a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/blob/gh-pages/data/shell-lesson-data.zip?raw=true">shell-lesson-data</a></ul>
-
-Please follow the steps below according to your operating system.
 </p>
-
-<h2 id="setup">Install the videoconferencing client</h2>
-
 <p>
-If you haven't used Zoom before, go to the <a href="https://zoom.us/download">official website</a> to download and install the Zoom client for your computer.
+  We maintain a list of common issues that occur during installation as a reference for instructors
+  that may be useful on the
+  <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
+  You will need to download <a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/blob/gh-pages/data/shell-lesson-data.zip?raw=true">shell-lesson-data.zip</a> and move it to your desktop. 
 </p>
 
 {% comment %}

@@ -74,7 +74,6 @@ read value
 
 for i in $(seq 1 $value);
 do echo ${cards[RANDOM%${#cards[@]}]};
-#do printf "%s\n" ${cards[@]} | shuf |head -1;
 done
 
 #for loop iterates over value given by user

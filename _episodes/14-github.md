@@ -1,4 +1,4 @@
----
+user.name/---
 title: Remotes in GitHub
 teaching: 45
 exercises: 0
@@ -90,12 +90,12 @@ Copy that URL from the browser, go into the local `shell-scripts` repository, an
 this command:
 
 ~~~
-$ git remote add origin git@github.com:vlad/shell-scripts.git
+$ git remote add origin git@github.com:user.name/shell-scripts.git
 ~~~
 {: .language-bash}
 
-Make sure to use the URL for your repository rather than Vlad's: the only
-difference should be your username instead of `vlad`.
+Make sure to use the URL for your repository rather than user.name: the only
+difference should be your username instead of `user.name`.
 
 `origin` is a local name used to refer to the remote repository. It could be called
 anything, but `origin` is a convention that is often used by default in git
@@ -109,8 +109,8 @@ $ git remote -v
 {: .language-bash}
 
 ~~~
-origin   git@github.com:vlad/shell-scripts.git (fetch)
-origin   git@github.com:vlad/shell-scripts.git (push)
+origin   git@github.com:user.name/shell-scripts.git (fetch)
+origin   git@github.com:user.name/shell-scripts.git (push)
 ~~~
 {: .output}
 
@@ -149,19 +149,19 @@ ls -al ~/.ssh
 
 Your output is going to look a little different depending on whether or not SSH has ever been set up on the computer you are using.
 
-Vlad has not set up SSH on his computer, so his output is
+In this example, we have not set up SSH on this computer, so the output is
 
 ~~~
-ls: cannot access '/c/Users/Vlad/.ssh': No such file or directory
+ls: cannot access '/c/Users/user.name/.ssh': No such file or directory
 ~~~
 {: .output}
 
 If SSH has been set up on the computer you're using, the public and private key pairs will be listed. The file names are either `id_ed25519`/`id_ed25519.pub` or `id_rsa`/`id_rsa.pub` depending on how the key pairs were set up.  
 
-Since they don’t exist on We’s computer, he uses this command to create them:
+Since they don’t exist on this computer, we can use this command to create them:
 
 ~~~
-$ ssh-keygen -t ed25519 -C "vlad@tran.sylvan.ia"
+$ ssh-keygen -t ed25519 -C "user@ucsb.edu"
 ~~~
 {: .language-bash}
 
@@ -170,19 +170,19 @@ If you are using a legacy system that doesn't support the Ed25519 algorithm, use
 
 ~~~
 Generating public/private ed25519 key pair.
-Enter file in which to save the key (/c/Users/Vlad We/.ssh/id_ed25519):
+Enter file in which to save the key (/c/Users/user.name/.ssh/id_ed25519):
 ~~~
 {: .output}
 
 We want to use the default file, so just press <kbd>Enter</kbd>.
 
 ~~~
-Created directory '/c/Users/Vlad We/.ssh'.
+Created directory '/c/Users/user.name We/.ssh'.
 Enter passphrase (empty for no passphrase):
 ~~~
 {: .output}
 
-Now, it is prompting We for a passphrase.  Since he is using his lab’s laptop that other people sometimes have access to, he wants to create a passphrase.  Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option.
+Now, it is prompting us for a passphrase.  Since we is using this lab’s laptop that other people sometimes have access to, we want to create a passphrase.  Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option.
 
 ~~~
 Enter same passphrase again:
@@ -192,10 +192,10 @@ Enter same passphrase again:
 After entering the same passphrase a second time, we receive the confirmation
 
 ~~~
-Your identification has been saved in /c/Users/Vlad Vlad/.ssh/id_ed25519
-Your public key has been saved in /c/Users/Vlad Vlad/.ssh/id_ed25519.pub
+Your identification has been saved in /c/Users/user.name/.ssh/id_ed25519
+Your public key has been saved in /c/Users/user.name/.ssh/id_ed25519.pub
 The key fingerprint is:
-SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o vlad@tran.sylvan.ia
+SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o user@ucsb.edu
 The key's randomart image is:
 +--[ED25519 256]--+
 |^B== o.          |
@@ -208,7 +208,7 @@ The key's randomart image is:
 |.o.o             |
 |oo+.             |
 +----[SHA256]-----+
-~~~We
+~~~
 {: .output}
 
 The "identification" is actually the private key. You should never share it.  The public key is appropriately named.  The "key fingerprint"
@@ -222,10 +222,10 @@ ls -al ~/.ssh
 {: .language-bash}
 
 ~~~
-drwxr-xr-x 1 Vlad 197121   0 Jul 16 14:48 ./
-drwxr-xr-x 1 Vlad 197121   0 Jul 16 14:48 ../
--rw-r--r-- 1 Vlad 197121 419 Jul 16 14:48 id_ed25519
--rw-r--r-- 1 Vlad 197121 106 Jul 16 14:48 id_ed25519.pub
+drwxr-xr-x 1 user.name 197121   0 Jul 16 14:48 ./
+drwxr-xr-x 1 user.name 197121   0 Jul 16 14:48 ../
+-rw-r--r-- 1 user.name 197121 419 Jul 16 14:48 id_ed25519
+-rw-r--r-- 1 user.name 197121 106 Jul 16 14:48 id_ed25519.pub
 ~~~
 {: .output}
 
@@ -258,13 +258,13 @@ cat ~/.ssh/id_ed25519.pub
 {: .language-bash}
 
 ~~~
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI vlad@tran.sylvan.ia
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI user@ucsb.edu
 ~~~
 {: .output}
 
 Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the
 settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now,
-you can add the title (Vlad uses the title "Vlad's Lab Laptop" so he can remember where the original key pair
+you can add the title (here, we use the title "User's Lab Laptop" so he can remember where the original key pair
 files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
 
 Now that we’ve set that up, let’s check our authentication again from the command line.
@@ -274,7 +274,7 @@ $ ssh -T git@github.com
 {: .language-bash}
 
 ~~~
-Hi Vlad! You've successfully authenticated, but GitHub does not provide shell access.
+Hi User.name! You've successfully authenticated, but GitHub does not provide shell access.
 ~~~
 {: .output}
 
@@ -288,7 +288,7 @@ $ git push origin main
 ~~~
 {: .language-bash}
 
-Since Vlad set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it
+Since we set up a passphrase, it will prompt us for it.  If you completed advanced settings for your authentication, it
 will not prompt for a passphrase.
 
 ~~~
@@ -299,7 +299,7 @@ Compressing objects: 100% (11/11), done.
 Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/vlad/shell-scripts.git
+To https://github.com/user.name/shell-scripts.git
  * [new branch]      main -> main
 ~~~
 {: .output}
@@ -370,7 +370,7 @@ $ git pull origin main
 {: .language-bash}
 
 ~~~
-From https://github.com/vlad/shell-scripts
+From https://github.com/user.name/shell-scripts
  * branch            main     -> FETCH_HEAD
 Already up-to-date.
 ~~~
@@ -465,7 +465,7 @@ GitHub, though, this command would download them to our local repository.
 > > remote: Counting objects: 100% (3/3), done.
 > > remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 > > Unpacking objects: 100% (3/3), done.
-> > From https://github.com/vlad/shell-scripts
+> > From https://github.com/user.name/shell-scripts
 > >  * branch            main     -> FETCH_HEAD
 > >  * [new branch]      main     -> origin/main
 > > fatal: refusing to merge unrelated histories
@@ -481,7 +481,7 @@ GitHub, though, this command would download them to our local repository.
 > > {: .language-bash}
 > >
 > > ~~~
-> > From https://github.com/vlad/shell-scripts
+> > From https://github.com/user.name/shell-scripts
 > >  * branch            main     -> FETCH_HEAD
 > > Merge made by the 'recursive' strategy.
 > > README.md | 1 +

@@ -405,7 +405,8 @@ please preview your site before committing, and make sure to run
   <a href = "{{site.swc_github}}/workshop-template/wiki/Configuration-Problems-and-Solutions">Configuration Problems and Solutions wiki page</a>.
   <br>
   <strong>You will need to download <a href="https://github.com/UCSBCarpentry/2021-12-14-ucsb-gitbash-online/blob/gh-pages/data/shell-lesson-data.zip?raw=true">shell-lesson-data.zip</a> and move it to your desktop.</strong>
-  You will also need to create a <a href="https://github.com/">Github Account</a> which will be used during the second half of the workshop
+  <br>
+  You will also need to create a <a href="https://github.com/">Github Account</a> which will be used during the second half of the workshop for Collaborating/Conflicts.
 </p>
 
 <h3 id="videoconferencing">Install the videoconferencing client</h3>

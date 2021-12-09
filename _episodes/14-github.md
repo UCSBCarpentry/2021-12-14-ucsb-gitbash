@@ -1,6 +1,6 @@
 ---
 title: Remotes in GitHub
-teaching: 45
+teaching: 30
 exercises: 0
 questions:
 - "How do I share my changes with others on the web?"
@@ -118,7 +118,7 @@ We'll discuss remotes in more detail in the next episode, while
 talking about how they might be used for collaboration.
 
 ## SSH Background and Setup
-Before we can connect to a remote repository, he needs to set up a way for his computer to authenticate with GitHub so it knows it’s him trying to connect to his remote repository.
+Before we can connect to a remote repository, we needs to set up a way for the computer to authenticate with GitHub so it knows it’s us trying to connect to the remote repository.
 
 We are going to set up the method that is commonly used by many different services to authenticate access on the command line.  This method is called Secure Shell Protocol (SSH).  SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.  
 
@@ -264,7 +264,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI
 
 Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the
 settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now,
-you can add the title (here, we use the title "User's Lab Laptop" so he can remember where the original key pair
+you can add the title (here, we use the title "User's Lab Laptop" so we can remember where the original key pair
 files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
 
 Now that we’ve set that up, let’s check our authentication again from the command line.

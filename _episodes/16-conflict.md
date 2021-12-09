@@ -1,6 +1,6 @@
 ---
 title: Conflicts
-teaching: 15
+teaching: 45
 exercises: 0
 questions:
 - "What do I do when my changes conflict with someone else's?"

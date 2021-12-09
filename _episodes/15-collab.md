@@ -1,6 +1,6 @@
 ---
 title: Collaborating
-teaching: 25
+teaching: 40
 exercises: 0
 questions:
 - "How can I use version control to collaborate with other people?"

@@ -412,7 +412,7 @@ please preview your site before committing, and make sure to run
 <h3 id="videoconferencing">Install the videoconferencing client</h3>
 
 <p>
-  If you haven't used Zoom before, go to the
+  The Zoom Meeting Link can be found in the Attendance Reminder email you receive. If you haven't used Zoom before, go to the
   <a href="https://zoom.us/download">official website</a>
   to download and install the Zoom client for your computer.
 </p>

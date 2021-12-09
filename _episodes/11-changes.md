@@ -724,7 +724,7 @@ repository (`git commit`):
 > > Now you can add both files to the staging area. We can do that in one line:
 > >
 > > ~~~
-> > $ git add for-loop.sh notes-for-loop.sh
+> > $ git add for-loop.sh notes-for-loop.txt
 > > ~~~
 > > {: .language-bash}
 > > Or with multiple commands:

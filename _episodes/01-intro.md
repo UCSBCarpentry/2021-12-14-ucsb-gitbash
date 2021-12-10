@@ -94,7 +94,7 @@ Also note that after you type a command, you have to press the <kbd>Enter</kbd> 
 > To change your prompt, type in:
 >
 > ~~~
-> $ export PS1= ">"
+> $ export PS1=">"
 > ~~~
 > This will last as long as the length of your shell session.
 > {: .language-bash}

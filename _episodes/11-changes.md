@@ -598,13 +598,14 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 
 
 ## Directories 
+Two important facts you should know about directires in Git:
+
 1.   Git does not track directories on their own, only files within them.
 2.   If you can create a directory in your Git repository and populate it with files, 
      you can add all the files in the directory at once.  
 
-> ## Directories
+> ## Challenge: creating directories in Git
 >
-> Two important facts you should know about directories in Git.
 >
 > 1. Create a new directory named loops
 >    Try it for yourself:
@@ -651,7 +652,7 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    ~~~
 >    {: .language-bash}
 >
-{: .callout}
+{: .challenge}
 
 To recap, when we want to add changes to our repository,
 we first need to add the changed files to the staging area

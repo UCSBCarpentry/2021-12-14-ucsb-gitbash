@@ -596,11 +596,16 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 > {: .output}
 {: .callout}
 
+
+## Directories 
+1. Git does not track directories on their own, only files within them.
+2. If you can create a directory in your Git repository and populate it with files, 
+   you can add all the files in the directory at once. 
 > ## Directories
 >
 > Two important facts you should know about directories in Git.
 >
-> 1. Git does not track directories on their own, only files within them.
+> 1. Create a new directory named loops
 >    Try it for yourself:
 >
 >    ~~~
@@ -619,8 +624,8 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 >    and their sole purpose is to populate a directory so that Git adds it to
 >    the repository. In fact, you can name such files anything you like.
 >
-> 2. If you create a directory in your Git repository and populate it with files,
->    you can add all files in the directory at once by:
+> 2. Add multiple files to a directory at once.  
+>    Try adding a new for-loop.sh file into your new subdirectory
 >
 >    ~~~
 >    git add <directory-with-files>

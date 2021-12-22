@@ -598,9 +598,10 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 
 
 ## Directories 
-1. Git does not track directories on their own, only files within them.
-2. If you can create a directory in your Git repository and populate it with files, 
-   you can add all the files in the directory at once. 
+1.   Git does not track directories on their own, only files within them.
+2.   If you can create a directory in your Git repository and populate it with files, 
+     you can add all the files in the directory at once.  
+
 > ## Directories
 >
 > Two important facts you should know about directories in Git.

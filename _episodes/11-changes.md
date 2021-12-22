@@ -597,8 +597,8 @@ Date:   Thu Aug 22 09:51:46 2013 -0400
 {: .callout}
 
 
-## Directories 
-Two important facts you should know about directires in Git:
+## Directories in Git
+Two important facts you should know about directories in Git:
 
 1.   Git does not track directories on their own, only files within them.
 2.   If you can create a directory in your Git repository and populate it with files, 
@@ -694,7 +694,7 @@ repository (`git commit`):
 > {: .solution}
 {: .challenge}
 
-> ## Committing Multiple Files
+> ## Challenge: Committing Multiple Files
 >
 > The staging area can hold changes from any number of files
 > that you want to commit as a single snapshot.

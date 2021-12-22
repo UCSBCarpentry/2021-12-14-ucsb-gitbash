@@ -607,8 +607,8 @@ Two important facts you should know about directires in Git:
 > ## Challenge: creating directories in Git
 >
 >
-> 1. Create a new directory named loops
->    Try it for yourself:
+>    Create a new directory named 'loops'
+>    We will be using this directory in the following lessons so please follow along.
 >
 >    ~~~
 >    $ cd ..
@@ -626,7 +626,7 @@ Two important facts you should know about directires in Git:
 >    and their sole purpose is to populate a directory so that Git adds it to
 >    the repository. In fact, you can name such files anything you like.
 >
-> 2. Add multiple files to a directory at once.  
+>    Add multiple files to a directory at once.  
 >    Try adding a new for-loop.sh file into your new subdirectory
 >
 >    ~~~
